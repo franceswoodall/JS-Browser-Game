@@ -2,8 +2,10 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; 
-    justify-content: space-between;  
+    justify-content: flex-start; 
     align-items: center;
+    padding-top: 50px;
+    background-color: grey; 
 }
 
 .board {
@@ -12,6 +14,7 @@ body {
     flex-direction: column; 
     gap: 10px; 
     padding: 10px; 
+    margin: 0; 
 }
 
 .row {
@@ -40,6 +43,8 @@ body {
     height: 50px; 
     border-radius: 50%; 
     border: 5px solid red; 
+    background-color: gold; 
+    border-style: dashed; 
     align-items: center; 
     justify-content: center;
     text-align: center;
@@ -51,6 +56,8 @@ body {
     height: 50px; 
     border-radius: 50%; 
     border: 5px solid red; 
+    border-style: dashed; 
+    background-color: gold;
     align-items: center; 
     justify-content: center;
     text-align: center;
@@ -59,4 +66,28 @@ body {
 h1 {
     color: red; 
     font-weight: bold; 
+}
+
+.player-keyboard {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    width: 100%; 
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px; 
+    margin: 0; 
+
+
+}
+
+.key {
+    display: flex;
+    flex: row;
+    font-size: 30px;
+    color: white; 
+    border: 1px solid white;
 }
