@@ -35,8 +35,14 @@ const alphabetBtns = document.querySelectorAll('.key');
 
 /*----------------------------- Event Listeners ----------------------------*/
 
+// the player needs to be able to click a letter button that starts the game 
+// the player needs to be able to click any letter button
+// the letter button needs to appear on the grid 
+
 alphabetBtns.forEach(btn => {
     btn.addEventListener('click', (evt) => {
-        console.log('clicked letter', evt.target.id); 
+        const clickedBtnElement = evt.target;
+        const letterAsString = clickedBtnElement.textContent; 
+        // console.log('clicked letter as string', letterAsString); 
     }); 
 }); 
