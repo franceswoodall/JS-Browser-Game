@@ -9,58 +9,60 @@
 </head>
 <body>
     <h1>Christmas Wordle</h1>
+    <h2>Placeholder</h2>
+    
 
     <!-- the board is the whole grid -->
     <!-- the row is the row of the grid -->
-    <!-- the square is the individual square-->
+    <!-- the tile is X,Y coordinates (the individual square) -->
 
-    <section class="board">
+    <section class="grid">
         <div class="row" id="0">
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
+            <div class="tile" id="tile-0-0"></div>
+            <div class="tile" id="tile-0-1"></div>
+            <div class="tile" id="tile-0-2"></div>
+            <div class="tile" id="tile-0-3"></div>
+            <div class="tile" id="tile-0-4"></div>
         </div>
 
         <div class="row" id="1">
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
+            <div class="tile" id="tile-1-0"></div>
+            <div class="tile" id="tile-1-1"></div>
+            <div class="tile" id="tile-1-2"></div>
+            <div class="tile" id="tile-1-3"></div>
+            <div class="tile" id="tile-1-4"></div>
         </div>
 
         <div class="row" id="2">
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
+            <div class="tile" id="tile-2-0"></div>
+            <div class="tile" id="tile-2-1"></div>
+            <div class="tile" id="tile-2-2"></div>
+            <div class="tile" id="tile-2-3"></div>
+            <div class="tile" id="tile-2-4"></div>
         </div>
 
         <div class="row" id="3">
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
+            <div class="tile" id="tile-3-0"></div>
+            <div class="tile" id="tile-3-1"></div>
+            <div class="tile" id="tile-3-2"></div>
+            <div class="tile" id="tile-3-3"></div>
+            <div class="tile" id="tile-3-4"></div>
         </div>
 
         <div class="row" id="4">
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
+            <div class="tile" id="tile-4-0"></div>
+            <div class="tile" id="tile-4-1"></div>
+            <div class="tile" id="tile-4-2"></div>
+            <div class="tile" id="tile-4-3"></div>
+            <div class="tile" id="tile-4-4"></div>
         </div>
 
         <div class="row" id="5">
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
+            <div class="tile" id="tile-5-0"></div>
+            <div class="tile" id="tile-5-1"></div>
+            <div class="tile" id="tile-5-2"></div>
+            <div class="tile" id="tile-5-3"></div>
+            <div class="tile" id="tile-5-4"></div>
         </div>
     </section>
 
@@ -92,17 +94,20 @@
         </div>
 
         <div class="keyboard-row">
-            <div class="key" id="enter">enter</div>
+
+            <div class="key-btn" id="enter">enter</div>
             <div class="key" id="Z">Z</div>
             <div class="key" id="X">X</div>
             <div class="key" id="C">C</div>
             <div class="key" id="V">V</div>
             <div class="key" id="B">B</div>
             <div class="key" id="N">N</div>
-            <div class="key" id="M">M</div>
-            <div class="key" id="backspace">backspace</div>
+            <div class="key" id="M">M</div> 
+            <button class="key-btn" id="backspace">backspace</div>
         </div>
     </section>
+
+    <p id="game-message"></p>
 
     <footer class="button-container"> 
         <button id="reset-button">Reset Game</button>

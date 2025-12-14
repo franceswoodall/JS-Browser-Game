@@ -8,7 +8,7 @@ body {
     background-color: grey; 
 }
 
-.board {
+.grid {
     background-color: lightgreen; 
     display: flex; 
     flex-direction: column; 
@@ -90,4 +90,10 @@ h1 {
     font-size: 30px;
     color: white; 
     border: 1px solid white;
+}
+
+#game-message {
+    color: red; 
+    font-size: 10px;
+    background-color: yellow;
 }
