@@ -1,4 +1,4 @@
-const solutionWords = [
+export const solutionWords = [
     'SANTA', 
     'ANGEL', 
     'HOLLY',
