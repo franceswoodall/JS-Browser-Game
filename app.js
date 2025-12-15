@@ -63,10 +63,6 @@ const clickEnter = () => {
         const guessUpper = currentGuessString.toUpperCase(); 
         const winningUpper = winningWord.toUpperCase(); 
 
-        console.log(`Guess String: "${guessUpper}"`); 
-        console.log(`Winning String: "${winningUpper}`); 
-        console.log(`Do they match? ${guessUpper === winningUpper}`); 
-
         if (guessUpper === winningUpper) {
             console.log('Congratulations, you have guessed the correct word. Continue to next round!')
         }
@@ -122,7 +118,7 @@ keyBtns.forEach(btn => {
 
 enterBtn.addEventListener('click', (evt) => {
      console.log('Enter key clicked'); 
-     clickEnter(); 
+        clickEnter(); 
 }); 
 
 backspaceBtn.addEventListener('click', (evt) => {
