@@ -33,12 +33,21 @@ const messageEl = document.querySelector('#game-message');
 
 const nextRoundBtn = document.querySelector('#next-round-button'); 
 
+const roundTrackerEl = document.querySelector('#round-tracker'); 
+
 
 /*-------------------------------- Functions --------------------------------*/
+
+const updateRoundDisplay = () => {
+    const displayRoundNumber = currentRound +1; 
+    roundTrackerEl.textContent = `Round: ${displayRoundNumber}`; 
+}
 
 const gameInit = () => {
     winningWord = solutionWords[currentRound]; 
     console.log(`Starting Round 1. Solution is ${winningWord}`); 
+
+    updateRoundDisplay(); 
 }
 
 
@@ -134,8 +143,9 @@ const advanceToNextRound = () => {
     if (currentRound < solutionWords.length) {
         winningWord = solutionWords[currentRound]; 
         console.log(`Starting Round ${currentRound + 1}. New Solution: ${winningWord}`); 
+        updateRoundDisplay(); 
     } else {
-        messageEl.textContent = 'Woah ho ho! Icy you have completed the game, congratulations!'
+        messageEl.textContent = 'Woah ho ho! Congratulations, icy you have completed the game! Cracker work.'
     }
 }; 
 
