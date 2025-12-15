@@ -126,6 +126,19 @@ const showWin = () => {
     nextRoundBtn.computedStyleMap.display = 'block'; 
 }
 
+const advanceToNextRound = () => {
+    nextRoundBtn.computedStyleMap.display = "none"; 
+    messageEl.textContent = ''; 
+    clearBoard(); 
+    currentRound ++; 
+    if (currentRound < solutionWords.length) {
+        winningWord = solutionWords[currentRound]; 
+        console.log(`Starting Round ${currentRound + 1}. New Solution: ${winningWord}`); 
+    } else {
+        messageEl.textContent = 'Woah ho ho! Icy you have completed the game, congratulations!'
+    }
+}; 
+
 const clearBoard = () => {
     currentRow = 0; 
     currentTileIndex = 0; 
