@@ -1,7 +1,6 @@
 
 
 /*-------------------------------- Constants ----------------------------------*/
-const Board = 0; 
 
 const maxWordLength = 5; 
 
@@ -9,19 +8,15 @@ const maxRows = 6;
 
 import {solutionWords} from "./wordList.js"; 
 
-
 /*---------------------------- Variables (state) ----------------------------*/
+
 let currentRound = 0; 
 
 let winningWord; 
 
-let currentGuess; 
-
 let currentRow = 0; 
 
 let currentTileIndex = 0;  
-
-let keyStatus; 
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -36,8 +31,6 @@ const messageEl = document.querySelector('#game-message');
 const nextRoundBtn = document.querySelector('#next-round-button'); 
 
 const roundTrackerEl = document.querySelector('#round-tracker'); 
-
-
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -118,10 +111,10 @@ const updateKeyboardColor = (letter, status) => {
 }
 
 const resetKeyboardColors = () => {
-    keyBtns.forEach((buton) => {
-        buttonEl.classList.remove('correct-placement'); 
-        buttonEl.classList.remove('incorrect-placement'); 
-        buttonEl.classList.remove('incorrect-letter'); 
+    keyBtns.forEach((key) => {
+        key.classList.remove('correct-placement'); 
+        key.classList.remove('incorrect-placement'); 
+        key.classList.remove('incorrect-letter'); 
     }); 
 }; 
 
@@ -163,6 +156,7 @@ const advanceToNextRound = () => {
     messageEl.textContent = ''; 
     clearBoard(); 
     resetKeyboardColors(); 
+
     currentRound ++; 
     if (currentRound < solutionWords.length) {
         winningWord = solutionWords[currentRound]; 
@@ -186,10 +180,6 @@ const clearBoard = () => {
         tile.classList.remove('incorrect-letter'); 
     }); 
 }
-
-
-
-
 
 /*----------------------------- Event Listeners ----------------------------*/
 
