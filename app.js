@@ -109,7 +109,7 @@ const clickBackspace = () => {
     }
 }; 
 
-const updateKeyboardColor = (letter) => {
+const updateKeyboardColor = (letter, status) => {
     const keyEl = document.getElementById(letter); 
     if (!keyEl.classList.contains('correct-placement') && (!keyEl.classList.contains('incorrect-placement'))) {
         keyEl.classList.add(status); 
