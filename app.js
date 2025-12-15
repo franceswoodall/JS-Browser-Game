@@ -41,8 +41,7 @@ const updateRoundDisplay = () => {
 
 const gameInit = () => {
     winningWord = solutionWords[currentRound]; 
-    console.log(`Starting Round 1. Solution is ${winningWord}`); 
-
+    // console.log(`Starting Round 1. Solution is ${winningWord}`); 
     updateRoundDisplay(); 
 }
 
@@ -57,6 +56,9 @@ const updateGrid = (letter) => {
 }; 
 
 const clickEnter = () => {
+    if (enterBtn.disabled) {
+        return; 
+    }
     if (currentTileIndex === maxWordLength) {
         const playerGuess = document.querySelectorAll(`#row-${currentRow} .tile`); 
         let currentGuessString = ''; 
@@ -71,6 +73,8 @@ const clickEnter = () => {
 
         if (guessUpper === winningUpper) {
             console.log('Congratulations, you have guessed the correct word. Continue to next round!')
+
+            enterBtn.disabled = true; 
 
             showWin(); 
         }
