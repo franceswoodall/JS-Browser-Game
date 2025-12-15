@@ -98,6 +98,26 @@ const clickBackspace = () => {
     }
 }; 
 
+const evaluateGuess = (playerGuess) => {
+   const solution = winningWord.toUpperCase(); 
+   
+   const guessTiles = document.querySelectorAll(`#row-${currentRow} .tile`); 
+   guessTiles.forEach((titleElement, index) => {
+
+    const guessedLetter = playerGuess[index]; 
+    const solutionLetter = solution[index]; 
+
+    if (guessedLetter === solutionLetter) {
+        titleElement.classList.add('correct-placement'); 
+    }
+    else if (solution.includes(guessedLetter)) {
+        titleElement.classList.add('incorrect-placement'); 
+    }
+    else {
+        titleElement.classList.add('incorrect-letter'); 
+    }
+   })
+}
 
 
 

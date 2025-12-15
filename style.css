@@ -97,3 +97,15 @@ h1 {
     font-size: 10px;
     background-color: yellow;
 }
+
+.correct-placement {
+    background-color: #538d4e;
+    border-color: black; 
+    color: white; 
+}
+
+.incorrect-placement {
+    background-color: #b59f3b;
+    border-color: black;
+    color: white; 
+}
