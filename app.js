@@ -116,19 +116,26 @@ const evaluateGuess = (playerGuess) => {
    guessTiles.forEach((titleElement, index) => {
 
     const guessedLetter = playerGuess[index]; 
-    const solutionLetter = solution[index]; 
+    const solutionLetter = solution[index];
+    const keyboardKeyEl = document.getElementById(guessedLetter);  
 
     if (guessedLetter === solutionLetter) {
         titleElement.classList.add('correct-placement'); 
+        keyboardKeyEl.classList.add('correct-placement'); 
     }
     else if (solution.includes(guessedLetter)) {
         titleElement.classList.add('incorrect-placement'); 
+        keyboardKeyEl.classList.add('incorrect-placement'); 
     }
     else {
         titleElement.classList.add('incorrect-letter'); 
+        if (!keyboardKeyEl.classList.contains('correct-placement') && (!keyboardKeyEl.classList.contains('incorrect-placement'))) {
+            keyboardKeyEl.classList.add('incorrect-letter'); 
+        }
     }
-   })
+   }); 
 }
+
 
 const showWin = () => {
     messageEl.textContent = 'Congratulations! Click next round button to continue'; 
