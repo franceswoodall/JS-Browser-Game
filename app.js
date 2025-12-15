@@ -21,6 +21,8 @@ let currentRow = 0;
 
 let currentTileIndex = 0;  
 
+let keyStatus; 
+
 /*------------------------ Cached Element References ------------------------*/
 
 const keyBtns = document.querySelectorAll('.key'); 
@@ -49,8 +51,6 @@ const gameInit = () => {
 
     updateRoundDisplay(); 
 }
-
-
 
 
 const updateGrid = (letter) => {
@@ -109,41 +109,46 @@ const clickBackspace = () => {
     }
 }; 
 
+const updateKeyboardColor = (letter) => {
+    const keyEl = document.getElementById(letter); 
+    if (!keyEl.classList.contains('correct-placement') && (!keyEl.classList.contains('incorrect-placement'))) {
+        keyEl.classList.add(status); 
+    }; 
+}
+
 const evaluateGuess = (playerGuess) => {
    const solution = winningWord.toUpperCase(); 
-   
    const guessTiles = document.querySelectorAll(`#row-${currentRow} .tile`); 
-   guessTiles.forEach((titleElement, index) => {
-
+   
+   guessTiles.forEach((tile, index) => {
     const guessedLetter = playerGuess[index]; 
     const solutionLetter = solution[index];
-    const keyboardKeyEl = document.getElementById(guessedLetter);  
+
+    let keyStatus = 'incorrect-letter'; 
 
     if (guessedLetter === solutionLetter) {
-        titleElement.classList.add('correct-placement'); 
-        keyboardKeyEl.classList.add('correct-placement'); 
+        tile.classList.add('correct-placement'); 
+        keyStatus = 'correct-placement'; 
     }
     else if (solution.includes(guessedLetter)) {
-        titleElement.classList.add('incorrect-placement'); 
-        keyboardKeyEl.classList.add('incorrect-placement'); 
+        tile.classList.add('incorrect-placement'); 
+        keyStatus = 'incorrect-placement'; 
     }
     else {
-        titleElement.classList.add('incorrect-letter'); 
-        if (!keyboardKeyEl.classList.contains('correct-placement') && (!keyboardKeyEl.classList.contains('incorrect-placement'))) {
-            keyboardKeyEl.classList.add('incorrect-letter'); 
-        }
-    }
-   }); 
-}
+            tile.classList.add('incorrect-letter'); 
+   }
+   updateKeyboardColor(guessedLetter, keyStatus); 
+    }); 
+}; 
 
 
 const showWin = () => {
     messageEl.textContent = 'Congratulations! Click next round button to continue'; 
-    nextRoundBtn.computedStyleMap.display = 'block'; 
+    nextRoundBtn.style.display = 'block'; 
 }
 
 const advanceToNextRound = () => {
-    nextRoundBtn.computedStyleMap.display = "none"; 
+    nextRoundBtn.style.display = "none"; 
     messageEl.textContent = ''; 
     clearBoard(); 
     currentRound ++; 
