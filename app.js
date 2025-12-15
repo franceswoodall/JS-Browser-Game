@@ -6,6 +6,8 @@ const maxWordLength = 5;
 
 const maxRows = 6; 
 
+const maxGameRounds = 10; 
+
 import {solutionWords} from "./wordList.js"; 
 
 /*---------------------------- Variables (state) ----------------------------*/
@@ -76,7 +78,13 @@ const clickEnter = () => {
 
             enterBtn.disabled = true; 
 
-            showWin(); 
+            if (currentRound === maxGameRounds -1) {
+                messageEl.textContent = 'Woah ho ho! Congratulations, icy you have completed the game! Cracker work!'; 
+
+            } else {
+
+                showWin()
+            }
         }
         currentRow ++; 
         currentTileIndex = 0; 
@@ -160,14 +168,14 @@ const advanceToNextRound = () => {
     messageEl.textContent = ''; 
     clearBoard(); 
     resetKeyboardColors(); 
+    enterBtn.disabled = false; 
 
     currentRound ++; 
-    if (currentRound < solutionWords.length) {
+
+    if (currentRound < maxGameRounds) {
         winningWord = solutionWords[currentRound]; 
         console.log(`Starting Round ${currentRound + 1}. New Solution: ${winningWord}`); 
         updateRoundDisplay(); 
-    } else {
-        messageEl.textContent = 'Woah ho ho! Congratulations, icy you have completed the game! Cracker work.'
     }
 }; 
 
