@@ -109,3 +109,9 @@ h1 {
     border-color: black;
     color: white; 
 }
+
+.incorrect-letter {
+    background-color: grey;
+    border-color: black; 
+    color: white; 
+}

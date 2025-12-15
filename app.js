@@ -31,6 +31,7 @@ const backspaceBtn = document.querySelector('#backspace');
 
 const messageEl = document.querySelector('#game-message'); 
 
+const nextRoundBtn = document.querySelector('#next-round-button'); 
 
 
 /*-------------------------------- Functions --------------------------------*/
@@ -63,11 +64,12 @@ const clickEnter = () => {
         const guessUpper = currentGuessString.toUpperCase(); 
         const winningUpper = winningWord.toUpperCase(); 
 
+        evaluateGuess(guessUpper); 
+
         if (guessUpper === winningUpper) {
             console.log('Congratulations, you have guessed the correct word. Continue to next round!')
-        }
-        else {
-            console.log('You have lost! Rest game to start from round 1 and try again!'); 
+
+            showWin(); 
         }
         currentRow ++; 
         currentTileIndex = 0; 
@@ -119,6 +121,25 @@ const evaluateGuess = (playerGuess) => {
    })
 }
 
+const showWin = () => {
+    messageEl.textContent = 'Congratulations! Click next round button to continue'; 
+    nextRoundBtn.computedStyleMap.display = 'block'; 
+}
+
+const clearBoard = () => {
+    currentRow = 0; 
+    currentTileIndex = 0; 
+
+    const allTiles = document.querySelectorAll('.tile'); 
+    allTiles.forEach(tile => {
+        tile.textContent = ''; 
+
+        tile.classList.remove('correct-placement'); 
+        tile.classList.remove('incorrect-placement'); 
+        tile.classList.remove('incorrect-letter'); 
+    }); 
+}
+
 
 
 
@@ -145,4 +166,7 @@ backspaceBtn.addEventListener('click', (evt) => {
     console.log('Backspace key clicked'); 
     clickBackspace(); 
 }); 
-       
+
+nextRoundBtn.addEventListener('click', (evt) => {
+    advanceToNextRound();
+})
