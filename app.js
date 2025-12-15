@@ -38,6 +38,7 @@ const nextRoundBtn = document.querySelector('#next-round-button');
 const roundTrackerEl = document.querySelector('#round-tracker'); 
 
 
+
 /*-------------------------------- Functions --------------------------------*/
 
 const updateRoundDisplay = () => {
@@ -116,6 +117,15 @@ const updateKeyboardColor = (letter, status) => {
     }; 
 }
 
+const resetKeyboardColors = () => {
+    keyBtns.forEach((buton) => {
+        buttonEl.classList.remove('correct-placement'); 
+        buttonEl.classList.remove('incorrect-placement'); 
+        buttonEl.classList.remove('incorrect-letter'); 
+    }); 
+}; 
+
+
 const evaluateGuess = (playerGuess) => {
    const solution = winningWord.toUpperCase(); 
    const guessTiles = document.querySelectorAll(`#row-${currentRow} .tile`); 
@@ -147,10 +157,12 @@ const showWin = () => {
     nextRoundBtn.style.display = 'block'; 
 }
 
+
 const advanceToNextRound = () => {
     nextRoundBtn.style.display = "none"; 
     messageEl.textContent = ''; 
     clearBoard(); 
+    resetKeyboardColors(); 
     currentRound ++; 
     if (currentRound < solutionWords.length) {
         winningWord = solutionWords[currentRound]; 
