@@ -11,7 +11,7 @@ import {solutionWords} from "./wordList.js";
 
 
 /*---------------------------- Variables (state) ----------------------------*/
-let currentRound; 
+let currentRound = 0; 
 
 let winningWord; 
 
@@ -35,6 +35,14 @@ const messageEl = document.querySelector('#game-message');
 
 /*-------------------------------- Functions --------------------------------*/
 
+const gameInit = () => {
+    winningWord = solutionWords[currentRound]; 
+    console.log(`Starting Round 1. Solution is ${winningWord}`); 
+}
+
+
+
+
 const updateGrid = (letter) => {
     const tileId = `tile-${currentRow}-${currentTileIndex}`; 
     const currentTile = document.getElementById(tileId); 
@@ -52,23 +60,25 @@ const clickEnter = () => {
             currentGuessString += guess.textContent; 
         }); 
 
-        if (currentGuessString === winningWord) {
-            console.log('Congratulations, you have guessed the correct word. Continue to next round!'); 
-        }
-       // else if {
-            // player is at less than 6 guesses 
-        }
-         //   console.log('Try again')
-        }
+        const guessUpper = currentGuessString.toUpperCase(); 
+        const winningUpper = winningWord.toUpperCase(); 
 
+        console.log(`Guess String: "${guessUpper}"`); 
+        console.log(`Winning String: "${winningUpper}`); 
+        console.log(`Do they match? ${guessUpper === winningUpper}`); 
 
-
-//         currentRow ++; 
-//         currentTileIndex = 0; 
-//     } else {
-//         updateMessage(); 
-//     }
-// }; 
+        if (guessUpper === winningUpper) {
+            console.log('Congratulations, you have guessed the correct word. Continue to next round!')
+        }
+        else {
+            console.log('You have lost! Rest game to start from round 1 and try again!'); 
+        }
+        currentRow ++; 
+        currentTileIndex = 0; 
+    } else {
+        updateMessage(); 
+    }
+}; 
 
 const updateMessage = () => {
     if (currentTileIndex < maxWordLength) {
@@ -82,22 +92,24 @@ const updateMessage = () => {
 const clickBackspace = () => {
     if (currentTileIndex > 0) {
         currentTileIndex--; 
-    const tileId = `tile-${currentRow}-${currentTileIndex}`; 
-    const currentTile = document.getElementById(tileId); 
-    if (currentTile) {
-        currentTile.textContent = ''; 
-    }
+
+        const tileId = `tile-${currentRow}-${currentTileIndex}`; 
+        const currentTile = document.getElementById(tileId); 
+
+        if (currentTile) {
+            currentTile.textContent = ''; 
+        }
     }
 }; 
 
 
 
 
+
+
 /*----------------------------- Event Listeners ----------------------------*/
 
-// the player needs to be able to click a letter button that starts the game 
-// the player needs to be able to click any letter button
-// the letter button needs to appear on the grid 
+gameInit(); 
 
 keyBtns.forEach(btn => {
     btn.addEventListener('click', (evt) => {
@@ -118,8 +130,3 @@ backspaceBtn.addEventListener('click', (evt) => {
     clickBackspace(); 
 }); 
        
-document.addEventListener('DOMContentLoaded', (evt) => {
-    let currentRound = 0; 
-    let winningWord = solutionWords[0]
-    console.log(`Round 1 Solution is: ${winningWord}`); 
-}); 
