@@ -49,9 +49,13 @@ const gameInit = () => {
 
 
 const updateGrid = (letter) => {
+    if (currentTile >= currentTileIndex <5) {
+        return; 
+}
     const tileId = `tile-${currentRow}-${currentTileIndex}`; 
     const currentTile = document.getElementById(tileId); 
-    if (currentTile && currentTileIndex <5) {
+
+    if (currentTile) {
         currentTile.textContent = letter; 
         currentTileIndex++; 
     }
