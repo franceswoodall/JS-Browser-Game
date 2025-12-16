@@ -75,6 +75,10 @@ const handleWin = (finalRound) => {
     if (finalRound) {
         messageEl.textContent = 'Congratulations! Click next round button'; 
         nextRoundBtn.style.display = 'block'; 
+    } else {
+        messageEl.textContent = 'You are sleighing it! Click next round button'; 
+        nextRoundBtn.style.display = 'block'; 
+
     }
 }
 
@@ -93,7 +97,9 @@ const clickEnter = () => {
         return; 
     }; 
 
-    const playerGuess = document.querySelectorAll(`$row-${currentRow}. tile`) ; 
+    const currentRowElement = document.getElementById(`row-${currentRow}`); 
+    const playerGuess = currentRowElement.querySelectorAll('.tile'); 
+
     let currentGuessString = ''; 
     playerGuess.forEach(guess => {
         currentGuessString += guess.textContent; 
@@ -116,7 +122,7 @@ const clickEnter = () => {
         // they move to next row 
     }
 
-    curretnRow ++; 
+    currentRow ++; 
     currentTileIndex = 0; 
 }; 
 
