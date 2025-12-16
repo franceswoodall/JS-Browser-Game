@@ -34,6 +34,8 @@ const nextRoundBtn = document.querySelector('#next-round-button');
 
 const roundTrackerEl = document.querySelector('#round-tracker'); 
 
+const resetBtn = document.querySelector('#reset-button'); 
+
 /*-------------------------------- Functions --------------------------------*/
 
 const updateRoundDisplay = () => {
@@ -166,6 +168,13 @@ const showWin = () => {
     nextRoundBtn.style.display = 'block'; 
 }
 
+const showLose = () => {
+    if (currentRow === maxRows -1) {
+        messageEl.textContent = 'Bah humbug, you are out of guesses! Yule have to click reset game if you want to play again'; 
+        enterBtn.disabled = true; 
+    }
+}
+
 
 const advanceToNextRound = () => {
     nextRoundBtn.style.display = "none"; 
@@ -197,6 +206,18 @@ const clearBoard = () => {
     }); 
 }
 
+const resetGame = () => {
+    currentRound = 0; 
+    currentRound = 0; 
+    currentTileIndex = 0; 
+    clearBoard(); 
+    resetKeyboardColors(); 
+    gameInit(); 
+    messageEl.textContent = ''; 
+    nextRoundBtn.style.display = 'none'; 
+    enterBtn.disabled = false; 
+}
+
 /*----------------------------- Event Listeners ----------------------------*/
 
 gameInit(); 
@@ -222,4 +243,8 @@ backspaceBtn.addEventListener('click', (evt) => {
 
 nextRoundBtn.addEventListener('click', (evt) => {
     advanceToNextRound();
+})
+
+resetBtn.addEventListener('click', (evt) => {
+    resetGame(); 
 })
