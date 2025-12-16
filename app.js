@@ -70,7 +70,7 @@ const insufficientLetters = () => {
     }, 2000); 
 }
 
-const handlWin = (finalRound) => {
+const handleWin = (finalRound) => {
     enterBtn.disabled = true; 
     if (finalRound) {
         messageEl.textContent = 'Congratulations! Click next round button'; 
@@ -88,29 +88,36 @@ const clickEnter = () => {
         return; 
     }
 
-    if (currentTileIndex === maxWordLength) {
-        const playerGuess = document.querySelectorAll(`#row-${currentRow} .tile`); 
-        let currentGuessString = ''; 
-        playerGuess.forEach(guess => {
-            currentGuessString += guess.textContent; 
-        }); 
-
-        const guessUpper = currentGuessString.toUpperCase(); 
-        const winningUpper = winningWord.toUpperCase(); 
-
-        evaluateGuess(guessUpper); 
-
-        if (guessUpper === winningUpper) {
-            handleWin(currentRow === maxRows -1) {
-                handleLoss(); 
-            }
-
-        currentRow ++; 
-        currentTileIndex = 0; 
-
-    } else {
+    if (currentTileIndex < maxWordLength) {
         insufficientLetters(); 
+        return; 
+    }; 
+
+    const playerGuess = document.querySelectorAll(`$row-${currentRow}. tile`) ; 
+    let currentGuessString = ''; 
+    playerGuess.forEach(guess => {
+        currentGuessString += guess.textContent; 
+    }); 
+
+    const guessUpper = currentGuessString.toUpperCase(); 
+    const winningUpper = winningWord.toUpperCase(); 
+    evaluateGuess(guessUpper); 
+
+    if (guessUpper === winningUpper) {
+        const isFinalRound = (currentRound === maxGameRounds - 1);
+        handleWin(isFinalRound); 
     }
+
+    else if (currentRow === maxRows - 1) {
+        handleLoss(); 
+    }
+
+    else {
+        // they move to next row 
+    }
+
+    curretnRow ++; 
+    currentTileIndex = 0; 
 }; 
 
 const clickBackspace = () => {
