@@ -63,10 +63,31 @@ const updateGrid = (letter) => {
     }
 }; 
 
+const insufficientLetters = () => {
+    messageEl.textContent = 'Not enough letters in this row!'; 
+    setTimeout(() => {
+        messageEl.textContent = ''; 
+    }, 2000); 
+}
+
+const handlWin = (finalRound) => {
+    enterBtn.disabled = true; 
+    if (finalRound) {
+        messageEl.textContent = 'Congratulations! Click next round button'; 
+        nextRoundBtn.style.display = 'block'; 
+    }
+}
+
+const handleLoss = () => {
+    enterBtn.disabled = true; 
+    messageEl.textContent = 'Bah humbug! You have lost the game, reset game to try again.'; 
+}
+
 const clickEnter = () => {
     if (enterBtn.disabled) {
         return; 
     }
+
     if (currentTileIndex === maxWordLength) {
         const playerGuess = document.querySelectorAll(`#row-${currentRow} .tile`); 
         let currentGuessString = ''; 
@@ -80,33 +101,17 @@ const clickEnter = () => {
         evaluateGuess(guessUpper); 
 
         if (guessUpper === winningUpper) {
-            console.log('Congratulations, you have guessed the correct word. Continue to next round!')
-
-            enterBtn.disabled = true; 
-
-            if (currentRound === maxGameRounds -1) {
-                messageEl.textContent = 'Woah ho ho! Congratulations, icy you have completed the game! Cracker work!'; 
-
-            } else {
-
-                showWin()
+            handleWin(currentRow === maxRows -1) {
+                handleLoss(); 
             }
-        }
+
         currentRow ++; 
         currentTileIndex = 0; 
+
     } else {
-        updateMessage(); 
+        insufficientLetters(); 
     }
 }; 
-
-const updateMessage = () => {
-    if (currentTileIndex < maxWordLength) {
-        messageEl.textContent = `Not enough letters in this row!`; 
-        setTimeout(() => {
-            messageEl.textContent = ''; 
-        }, 2000); 
-    }
-}
 
 const clickBackspace = () => {
     if (currentTileIndex > 0) {
@@ -161,19 +166,6 @@ const evaluateGuess = (playerGuess) => {
    updateKeyboardColor(guessedLetter, keyStatus); 
     }); 
 }; 
-
-
-const showWin = () => {
-    messageEl.textContent = 'Congratulations! Click next round button to continue'; 
-    nextRoundBtn.style.display = 'block'; 
-}
-
-const showLose = () => {
-    if (currentRow === maxRows -1) {
-        messageEl.textContent = 'Bah humbug, you are out of guesses! Yule have to click reset game if you want to play again'; 
-        enterBtn.disabled = true; 
-    }
-}
 
 
 const advanceToNextRound = () => {
