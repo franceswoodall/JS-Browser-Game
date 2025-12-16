@@ -73,9 +73,9 @@ const insufficientLetters = () => {
 const handleWin = (finalRound) => {
     enterBtn.disabled = true; 
     if (finalRound) {
-        messageEl.textContent = 'Congratulations! Icy you have won the game!'; 
+        messageEl.textContent = 'Icy you have won the game! Merry Christmas, ya filthy animal'; 
     } else {
-        messageEl.textContent = 'You are sleighing it! Click next round button'; 
+        messageEl.textContent = 'You are sleigh-in it! Click next round button'; 
         nextRoundBtn.style.display = 'block'; 
 
     }
@@ -83,8 +83,18 @@ const handleWin = (finalRound) => {
 
 const handleLoss = () => {
     enterBtn.disabled = true; 
-    messageEl.textContent = 'Bah humbug! You have lost the game, reset game to try again.'; 
-}
+    const roundsCompleted = currentRound; 
+
+    let playerMessage = ''; 
+
+    if (roundsCompleted >= 0 && roundsCompleted <=3) {
+        playerMessage = 'Bah humbug! You scored ${roundsWon}/${maxGameRounds}. Click reset game to play again'; 
+    } else if (roundsCompleted >=4 && roundsCompleted <=6) {
+        playerMessage = 'Not snow bad! You must be a south pole elf. You scored ${roundsWon}/${maxGameRounds}. Click reset game to play again'; 
+    } else if (roundsCompleted >= 7 && roundsCompleted <=9) {
+        playerMessage = 'Cracker work, you are a rudolph! You scored ${roundsWon}/${maxGameRounds}. Click reset game to play again'; 
+    } else 
+        playerMessage = 'Son of a nutcracker you have won! You are officially a wise (hu)man'; 
 
 const clickEnter = () => {
     if (enterBtn.disabled) {
