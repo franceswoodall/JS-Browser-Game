@@ -64,24 +64,32 @@ const updateGrid = (letter) => {
 }; 
 
 const insufficientLetters = () => {
-    messageEl.textContent = 'Not enough letters in this row!'; 
-    setTimeout(() => {
-        messageEl.textContent = ''; 
-    }, 2000); 
+    showMessage('Not enough letters in this row!'); 
 }
 
 const handleWin = (finalRound) => {
     enterBtn.disabled = true; 
 
     if (finalRound) {
-        messageEl.textContent = `Son of a nutcracker you have won! You are officially a wise (hu)man`; 
+        showMessage(`Son of a nutcracker you have won! You are officially a wise (hu)man`); 
         nextRoundBtn.style.display = 'none'; 
     } else {
-        messageEl.textContent = 'You are sleigh-in it! Click next round button'; 
+        showMessage('You are sleigh-in it! Click next round button'); 
         nextRoundBtn.style.display = 'block'; 
 
     }
 }; 
+
+function showMessage(messageContent) {
+    const gameMessageElement = document.getElementById('game-message'); 
+    gameMessageElement.innerText = messageContent; 
+    
+    gameMessageElement.classList.add('visible'); 
+
+    setTimeout(() => {
+        gameMessageElement.classList.remove('visible'); 
+    }, 2000); 
+}
 
 const handleLoss = () => {
     enterBtn.disabled = true; 
@@ -98,7 +106,7 @@ const handleLoss = () => {
     } else {
         playerMessage = `Son of a nutcracker you have won! You are officially a wise (hu)man`; 
     }
-    messageEl.textContent = playerMessage; 
+    showMessage(playerMessage); 
 }; 
 
 const clickEnter = () => {
