@@ -68,28 +68,31 @@ const insufficientLetters = () => {
 }
 
 const handleWin = (finalRound) => {
+    // console.log('handlewin function called'); 
     enterBtn.disabled = true; 
 
     if (finalRound) {
         showMessage(`Son of a nutcracker you have won! You are officially a wise (hu)man`); 
         nextRoundBtn.style.display = 'none'; 
     } else {
-        showMessage('You are sleigh-in it! Click next round button'); 
+        showMessage('You are sleigh-in it! Click next round button', 0); 
         nextRoundBtn.style.display = 'block'; 
 
     }
 }; 
 
-function showMessage(messageContent) {
+function showMessage(messageContent, duration = 2000) {
     const gameMessageElement = document.getElementById('game-message'); 
     gameMessageElement.innerText = messageContent; 
     
     gameMessageElement.classList.add('visible'); 
 
+    if (duration >0) {
     setTimeout(() => {
         gameMessageElement.classList.remove('visible'); 
-    }, 2000); 
-}
+    }, duration); 
+    }
+}; 
 
 const handleLoss = () => {
     enterBtn.disabled = true; 
@@ -106,7 +109,7 @@ const handleLoss = () => {
     } else {
         playerMessage = `Son of a nutcracker you have won! You are officially a wise (hu)man`; 
     }
-    showMessage(playerMessage); 
+    showMessage(playerMessage, 0); 
 }; 
 
 const clickEnter = () => {

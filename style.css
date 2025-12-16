@@ -131,8 +131,13 @@ h1 {
     position: absolute;
     top: 150px; 
     left: 50%; 
+    display: block;
     opacity: 0;
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; 
+}
+
+#game-message.visible {
+    opacity: 1; 
 }
 
 .correct-placement {
