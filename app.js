@@ -74,7 +74,6 @@ const handleWin = (finalRound) => {
     enterBtn.disabled = true; 
     if (finalRound) {
         messageEl.textContent = 'Congratulations! Icy you have won the game!'; 
-        nextRoundBtn.style.display = 'block'; 
     } else {
         messageEl.textContent = 'You are sleighing it! Click next round button'; 
         nextRoundBtn.style.display = 'block'; 
