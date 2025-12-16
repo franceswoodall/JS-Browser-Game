@@ -74,10 +74,10 @@ const handleWin = (finalRound) => {
 
     if (finalRound) {
         showMessage(`Son of a nutcracker you have won! You are officially a wise (hu)man`); 
-        nextRoundBtn.style.disabled = true; 
+        nextRoundBtn.disabled = true; 
     } else {
         showMessage('You are sleigh-in it! Click next round button', 0); 
-        nextRoundBtn.style.disabled = false; 
+        nextRoundBtn.disabled = false; 
 
     }
 }; 
@@ -210,7 +210,6 @@ const evaluateGuess = (playerGuess) => {
 
 
 const advanceToNextRound = () => {
-    nextRoundBtn.style.disabled = truq; 
     messageEl.textContent = ''; 
     clearBoard(); 
     resetKeyboardColors(); 
@@ -246,7 +245,7 @@ const resetGame = () => {
     resetKeyboardColors(); 
     gameInit(); 
     messageEl.textContent = ''; 
-    nextRoundBtn.style.disabled = true; 
+    nextRoundBtn.disabled = true; 
     enterBtn.disabled = false; 
 }
 
