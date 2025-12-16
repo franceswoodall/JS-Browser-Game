@@ -53,7 +53,7 @@ const gameInit = () => {
 const updateGrid = (letter) => {
     if (currentTileIndex >= maxWordLength) {
         return; 
-}
+    }
     const tileId = `tile-${currentRow}-${currentTileIndex}`; 
     const currentTile = document.getElementById(tileId); 
 
@@ -72,14 +72,16 @@ const insufficientLetters = () => {
 
 const handleWin = (finalRound) => {
     enterBtn.disabled = true; 
+
     if (finalRound) {
-        messageEl.textContent = 'Icy you have won the game! Merry Christmas, ya filthy animal'; 
+        messageEl.textContent = `Son of a nutcracker you have won! You are officially a wise (hu)man`; 
+        nextRoundBtn.style.display = 'none'; 
     } else {
         messageEl.textContent = 'You are sleigh-in it! Click next round button'; 
         nextRoundBtn.style.display = 'block'; 
 
     }
-}
+}; 
 
 const handleLoss = () => {
     enterBtn.disabled = true; 
@@ -88,13 +90,16 @@ const handleLoss = () => {
     let playerMessage = ''; 
 
     if (roundsCompleted >= 0 && roundsCompleted <=3) {
-        playerMessage = 'Bah humbug! You scored ${roundsWon}/${maxGameRounds}. Click reset game to play again'; 
+        playerMessage = `Bah humbug! You scored ${roundsCompleted}/${maxGameRounds}. Click reset game to play again`; 
     } else if (roundsCompleted >=4 && roundsCompleted <=6) {
-        playerMessage = 'Not snow bad! You must be a south pole elf. You scored ${roundsWon}/${maxGameRounds}. Click reset game to play again'; 
+        playerMessage = `Not snow bad! You must be a south pole elf. You scored ${roundsCompleted}/${maxGameRounds}. Click reset game to play again`; 
     } else if (roundsCompleted >= 7 && roundsCompleted <=9) {
-        playerMessage = 'Cracker work, you are a rudolph! You scored ${roundsWon}/${maxGameRounds}. Click reset game to play again'; 
-    } else 
-        playerMessage = 'Son of a nutcracker you have won! You are officially a wise (hu)man'; 
+        playerMessage = `Cracker work, you are a rudolph! You scored ${roundsCompleted}/${maxGameRounds}. Click reset game to play again`; 
+    } else {
+        playerMessage = `Son of a nutcracker you have won! You are officially a wise (hu)man`; 
+    }
+    messageEl.textContent = playerMessage; 
+}; 
 
 const clickEnter = () => {
     if (enterBtn.disabled) {
@@ -121,19 +126,19 @@ const clickEnter = () => {
     if (guessUpper === winningUpper) {
         const isFinalRound = (currentRound === maxGameRounds - 1);
         handleWin(isFinalRound); 
+        currentRow++;
+        currentTileIndex =0; 
     }
 
     else if (currentRow === maxRows - 1) {
-        console.log('loss condition met! calling handleLoss()'); 
         handleLoss(); 
+        currentTileIndex = 0; 
     }
 
     else {
-        // they move to next row 
+        currentRow ++; 
+        currentTileIndex = 0; 
     }
-
-    currentRow ++; 
-    currentTileIndex = 0; 
 }; 
 
 const clickBackspace = () => {
@@ -223,7 +228,6 @@ const clearBoard = () => {
 
 const resetGame = () => {
     currentRound = 0; 
-    currentRound = 0; 
     currentTileIndex = 0; 
     clearBoard(); 
     resetKeyboardColors(); 
@@ -262,4 +266,4 @@ nextRoundBtn.addEventListener('click', (evt) => {
 
 resetBtn.addEventListener('click', (evt) => {
     resetGame(); 
-})
+}); 
