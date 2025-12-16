@@ -49,7 +49,7 @@ const gameInit = () => {
 
 
 const updateGrid = (letter) => {
-    if (currentTile >= currentTileIndex <5) {
+    if (currentTileIndex >= maxWordLength) {
         return; 
 }
     const tileId = `tile-${currentRow}-${currentTileIndex}`; 
