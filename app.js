@@ -73,7 +73,7 @@ const insufficientLetters = () => {
 const handleWin = (finalRound) => {
     enterBtn.disabled = true; 
     if (finalRound) {
-        messageEl.textContent = 'Congratulations! Click next round button'; 
+        messageEl.textContent = 'Congratulations! Icy you have won the game!'; 
         nextRoundBtn.style.display = 'block'; 
     } else {
         messageEl.textContent = 'You are sleighing it! Click next round button'; 
@@ -115,6 +115,7 @@ const clickEnter = () => {
     }
 
     else if (currentRow === maxRows - 1) {
+        console.log('loss condition met! calling handleLoss()'); 
         handleLoss(); 
     }
 
