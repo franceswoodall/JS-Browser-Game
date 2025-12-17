@@ -50,7 +50,6 @@ const gameInit = () => {
     nextRoundBtn.disabled = true; 
 }
 
-
 const updateGrid = (letter) => {
     if (currentTileIndex >= maxWordLength) {
         return; 
@@ -88,7 +87,7 @@ function showMessage(messageContent, duration = 2000) {
     
     gameMessageElement.classList.add('visible'); 
 
-    if (duration >0) {
+    if (duration > 0) {
     setTimeout(() => {
         gameMessageElement.classList.remove('visible'); 
     }, duration); 
@@ -140,7 +139,7 @@ const clickEnter = () => {
         const isFinalRound = (currentRound === maxGameRounds - 1);
         handleWin(isFinalRound); 
         currentRow++;
-        currentTileIndex =0; 
+        currentTileIndex = 0; 
     }
 
     else if (currentRow === maxRows - 1) {
@@ -211,7 +210,7 @@ const evaluateGuess = (playerGuess) => {
 
 const advanceToNextRound = () => {
     messageEl.textContent = ''; 
-    clearBoard(); 
+    clearGrid(); 
     resetKeyboardColors(); 
     enterBtn.disabled = false; 
 
@@ -219,12 +218,12 @@ const advanceToNextRound = () => {
 
     if (currentRound < maxGameRounds) {
         winningWord = solutionWords[currentRound]; 
-        console.log(`Starting Round ${currentRound + 1}. New Solution: ${winningWord}`); 
+        // console.log(`Starting Round ${currentRound + 1}. New Solution: ${winningWord}`); 
         updateRoundDisplay(); 
     }
 }; 
 
-const clearBoard = () => {
+const clearGrid = () => {
     currentRow = 0; 
     currentTileIndex = 0; 
 
@@ -241,7 +240,7 @@ const clearBoard = () => {
 const resetGame = () => {
     currentRound = 0; 
     currentTileIndex = 0; 
-    clearBoard(); 
+    clearGrid(); 
     resetKeyboardColors(); 
     gameInit(); 
     messageEl.textContent = ''; 
