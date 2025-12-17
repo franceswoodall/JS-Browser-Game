@@ -68,14 +68,14 @@ body {
     cursor: pointer;
 } 
 
-h1, h2 {
+h1, h2, h3 {
     color: #ff0000; 
     margin: 0; 
     line-height: 1.1;
 }
 
 h1 {
-    font-weight: bold; 
+    font-weight: bold;  
 }
 
 h2 { 
@@ -83,9 +83,7 @@ h2 {
 }
 
 h3 {
-    color: #ff0000; 
     margin: 10px 0 10px 0; 
-    line-height: 1.2;
 }
 
 .player-keyboard {
