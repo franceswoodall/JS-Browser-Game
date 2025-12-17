@@ -68,11 +68,10 @@ const insufficientLetters = () => {
 }
 
 const handleWin = (finalRound) => {
-    // console.log('handlewin function called'); 
     enterBtn.disabled = true; 
 
     if (finalRound) {
-        showMessage(`Son of a nutcracker you have won! You are officially a wise (hu)man`); 
+        showMessage(`Son of a nutcracker you have won! You are officially a wise (hu)man`, 0); 
         nextRoundBtn.disabled = true; 
     } else {
         showMessage('You are sleigh-in it! Click next round button', 0); 
