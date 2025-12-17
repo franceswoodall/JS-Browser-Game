@@ -40,7 +40,7 @@ const resetBtn = document.querySelector('#reset-button');
 
 const updateRoundDisplay = () => {
     const displayRoundNumber = currentRound +1; 
-    roundTrackerEl.textContent = `Round: ${displayRoundNumber}`; 
+    roundTrackerEl.textContent = `Round ${displayRoundNumber}`; 
 }
 
 const gameInit = () => {
