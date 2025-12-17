@@ -101,7 +101,7 @@ const handleLoss = () => {
     let playerMessage = ''; 
 
     if (roundsCompleted >= 0 && roundsCompleted <=3) {
-        playerMessage = `Bah humbug! You scored ${roundsCompleted}/${maxGameRounds}. Click reset game to play again`; 
+        playerMessage = `Bah humbug! You scored ${roundsCompleted}/${maxGameRounds} you cotton-headed ninny muggin! Click reset game to play again`; 
     } else if (roundsCompleted >=4 && roundsCompleted <=6) {
         playerMessage = `Not snow bad! You must be a south pole elf. You scored ${roundsCompleted}/${maxGameRounds}. Click reset game to play again`; 
     } else if (roundsCompleted >= 7 && roundsCompleted <=9) {
