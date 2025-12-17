@@ -1,12 +1,12 @@
 export const solutionWords = [
     'SANTA', 
     'ANGEL', 
-    'HOLLY',
-    'CLAUS',
-    'CHEER', 
-    'STRAW',
-    'ELVES',
-    'SCARF',
+    'CAROL',
+    'FROST',
+    'ELVES', 
+    'COCOA',
+    'CUPID',
+    'JOLLY',
     'VIXEN',
     'MYRRH',
 ]

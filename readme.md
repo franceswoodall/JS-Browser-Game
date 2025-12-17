@@ -1,7 +1,9 @@
 #Christmas Wordle
 
 #Background 
-This game is the Christmas themed version of the popular game 'Wordle'. 
+* This game is the Christmas themed version of the popular game 'Wordle'! 
+* Wordle was created in October 2021 when a Welsh software engineer built the game for his partner during the pandemic. It grew from 90 daily players in November 2021 to over 2 million just two months later. 
+* It remains a popular game, so grab a cup of cocoa and enjoy this festive edition. 
 
 #Instructions - general 
 * There are 10 rounds in this game.
@@ -20,6 +22,16 @@ This game is the Christmas themed version of the popular game 'Wordle'.
 
 #Technologies used 
 JavaScript, HTML & CSS. 
+
+#Next Steps 
+* To further develop this game some suggestions include: 
+    - Creating a more complex 'lose' logic. Introducing either a timer element or a lives element would likely improve the user experience as they would not need to reset the game entirely but could lose a life after 6 guesses instead. 
+    - Increasing animation when tiles appear on the grid (for example turning or popping out at the player). 
+    - Having a live animation appear on the final round, such as confetti falling down the page. 
+    - Creating bespoke messages for every round a player passes rather than keeping it generic ('you are sleigh-in it'). 
+    - Additional instructions on the screen for the player. 
+    - Decoration such as a border around the page. 
+
 
 
 
