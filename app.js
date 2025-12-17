@@ -64,7 +64,7 @@ const updateGrid = (letter) => {
 }; 
 
 const insufficientLetters = () => {
-    showMessage('Not enough letters in this row!'); 
+    showMessage('Icy you do not have enough letters in this row!'); 
 }
 
 const handleWin = (finalRound) => {
@@ -105,7 +105,7 @@ const handleLoss = () => {
     } else if (roundsCompleted >=4 && roundsCompleted <=6) {
         playerMessage = `Not snow bad! You must be a south pole elf. You scored ${roundsCompleted}/${maxGameRounds}. Click reset game to play again`; 
     } else if (roundsCompleted >= 7 && roundsCompleted <=9) {
-        playerMessage = `Cracker work, you are a rudolph! You scored ${roundsCompleted}/${maxGameRounds}. Click reset game to play again`; 
+        playerMessage = `Cracker attempt, you are a rudolph! You scored ${roundsCompleted}/${maxGameRounds}. Click reset game to play again`; 
     } else {
         playerMessage = `Son of a nutcracker you have won! You are officially a wise (hu)man`; 
     }
