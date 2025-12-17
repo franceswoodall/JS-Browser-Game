@@ -45,7 +45,6 @@ const updateRoundDisplay = () => {
 
 const gameInit = () => {
     winningWord = solutionWords[currentRound]; 
-    // console.log(`Starting Round 1. Solution is ${winningWord}`); 
     updateRoundDisplay(); 
     nextRoundBtn.disabled = true; 
 }
@@ -64,7 +63,7 @@ const updateGrid = (letter) => {
 }; 
 
 const insufficientLetters = () => {
-    showMessage('Yule need to add more letters!'); 
+    showMessage('Icy you need to add more letters!'); 
 }
 
 const handleWin = (finalRound) => {
@@ -76,7 +75,6 @@ const handleWin = (finalRound) => {
     } else {
         showMessage('You are sleigh-in it! Click next round button', 0); 
         nextRoundBtn.disabled = false; 
-
     }
 }; 
 
@@ -114,7 +112,6 @@ const handleLoss = () => {
 
 const clickEnter = () => {
  
-
     if (enterBtn.disabled || nextRoundBtn.disabled === false) {
         return; 
     }
@@ -141,14 +138,10 @@ const clickEnter = () => {
         const isFinalRound = (currentRound === maxGameRounds - 1);
         handleWin(isFinalRound); 
         return; 
-    }
-
-    else if (currentRow === maxRows - 1) {
+    } else if (currentRow === maxRows - 1) {
         handleLoss(); 
         return; 
-    }
-
-    else {
+    } else {
         currentRow ++; 
         currentTileIndex = 0; 
     }
@@ -217,7 +210,6 @@ const advanceToNextRound = () => {
 
     if (currentRound < maxGameRounds) {
         winningWord = solutionWords[currentRound]; 
-        // console.log(`Starting Round ${currentRound + 1}. New Solution: ${winningWord}`); 
         updateRoundDisplay(); 
     }
 }; 
