@@ -33,7 +33,7 @@ body {
     display: flex;
     flex-grow: 1; 
     aspect-ratio: 1 / 1;
-    border: 3px solid green; 
+    border: 3px solid #2e7d32; 
     color: black; 
     align-items: center;
     justify-content: center;
@@ -74,11 +74,15 @@ h1 {
     font-weight: bold; 
     margin: 0; 
     line-height: 1.1;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+    text-decoration-color: #2e7d32;
 }
 
 h2 { 
     color: #ff0000; 
     margin: 0; 
+    margin-top: 10px; 
     line-height: 1.1; 
 }
 
