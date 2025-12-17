@@ -19,7 +19,6 @@ body {
     margin: 5px auto 7px auto;  
     justify-content: center;
     padding: 10px; 
-    
 }
 
 .row {
@@ -77,8 +76,6 @@ h1, h2 {
 
 h1 {
     font-weight: bold; 
-    text-decoration: underline wavy;  
-    text-decoration-color: #2e7d32;
 }
 
 h2 { 
