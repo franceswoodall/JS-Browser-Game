@@ -4,7 +4,7 @@ body {
     min-height: 100vh; 
     justify-content: flex-start; 
     align-items: center;
-    padding-top: 50px;
+    padding-top: 0px;
     background-color: black; 
     font-family: 'Courier New', Courier, monospace; 
 }
@@ -16,7 +16,7 @@ body {
     gap: 10px; 
     width: 90vw;
     max-width: 400px; 
-    margin: 20px auto;  
+    margin: 5px auto 7px auto;  
     justify-content: center;
     padding: 10px; 
     
@@ -44,7 +44,6 @@ body {
     flex-direction: row;
     justify-content: center;
     gap: 15px; 
-    margin-top: 20px;
 }
 
 #reset-button {
@@ -55,6 +54,7 @@ body {
     color: black;
     font-weight: bold;
     cursor: pointer;
+    margin-top: 0; 
 }
 
 #next-round-button {
@@ -68,18 +68,22 @@ body {
 } 
 
 h1 {
-    color: #e51d0e;
+    color: #FF0000; 
     font-weight: bold; 
     margin-bottom: 0px; 
+    line-height: 1.2;
 }
 
 h2 { 
-    color: #e51d0e;
+    color: #FF0000; 
+    line-height: 1.2; 
 }
 
 h3 {
     margin-top: 5px; 
-    color: #e51d0e;
+    color: #FF0000; 
+    line-height: 1.2;
+    margin-top: -5px;
 }
 
 .player-keyboard {
@@ -88,7 +92,6 @@ h3 {
     align-items: center;
     width: 100%; 
     max-width: 500px;
-    margin-top: 20px;
 }
 
 .keyboard-row {
@@ -133,7 +136,7 @@ h3 {
 }
 
 #game-message {
-    color: #e51d0e;
+    color: #FF0000; 
     font-size: 1rem; 
     font-weight: bold;
     text-align: center;
