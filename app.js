@@ -64,7 +64,7 @@ const updateGrid = (letter) => {
 }; 
 
 const insufficientLetters = () => {
-    showMessage('Icy you do not have enough letters in this row!'); 
+    showMessage('Yule need to add more letters!'); 
 }
 
 const handleWin = (finalRound) => {
