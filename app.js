@@ -51,7 +51,7 @@ const gameInit = () => {
 }
 
 const updateGrid = (letter) => {
-    if (currentTileIndex >= maxWordLength) {
+    if (currentTileIndex >= maxWordLength || nextRoundBtn.disabled === false) {
         return; 
     }
     const tileId = `tile-${currentRow}-${currentTileIndex}`; 
@@ -114,7 +114,9 @@ const handleLoss = () => {
 }; 
 
 const clickEnter = () => {
-    if (enterBtn.disabled) {
+ 
+
+    if (enterBtn.disabled || nextRoundBtn.disabled === false) {
         return; 
     }
 
@@ -133,18 +135,18 @@ const clickEnter = () => {
 
     const guessUpper = currentGuessString.toUpperCase(); 
     const winningUpper = winningWord.toUpperCase(); 
+    
     evaluateGuess(guessUpper); 
 
     if (guessUpper === winningUpper) {
         const isFinalRound = (currentRound === maxGameRounds - 1);
         handleWin(isFinalRound); 
-        currentRow++;
-        currentTileIndex = 0; 
+        return; 
     }
 
     else if (currentRow === maxRows - 1) {
         handleLoss(); 
-        currentTileIndex = 0; 
+        return; 
     }
 
     else {
@@ -189,18 +191,15 @@ const evaluateGuess = (playerGuess) => {
    guessTiles.forEach((tile, index) => {
     const guessedLetter = playerGuess[index]; 
     const solutionLetter = solution[index];
-
     let keyStatus = 'incorrect-letter'; 
 
     if (guessedLetter === solutionLetter) {
         tile.classList.add('correct-placement'); 
         keyStatus = 'correct-placement'; 
-    }
-    else if (solution.includes(guessedLetter)) {
+    } else if (solution.includes(guessedLetter)) {
         tile.classList.add('incorrect-placement'); 
         keyStatus = 'incorrect-placement'; 
-    }
-    else {
+    } else {
             tile.classList.add('incorrect-letter'); 
    }
    updateKeyboardColor(guessedLetter, keyStatus); 
@@ -213,6 +212,7 @@ const advanceToNextRound = () => {
     clearGrid(); 
     resetKeyboardColors(); 
     enterBtn.disabled = false; 
+    nextRoundBtn.disabled = true; 
 
     currentRound ++; 
 
