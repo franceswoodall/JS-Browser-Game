@@ -251,22 +251,36 @@ const clearGrid = () => {
         tile.classList.remove('incorrect-letter'); 
     }); 
 }
+const displayResetConfirmation = () => {
+    showMessage('Hold your reindeer! Are you sure you want to reset game?', 0); 
+    document.getElementById('reset-choices').style.display = 'block'; 
+}; 
 
-const resetGame = () => {
-    const confirmReset = confirm("Hold your reindeer! Are you sure you want to reset?"); 
-
-    if (confirmed) {
+const handleConfirmReset = () => {
     currentRound = 0; 
     currentTileIndex = 0; 
     currentRow = 0; 
+
     clearGrid(); 
     resetKeyboardColors(); 
     gameInit(); 
+
     messageEl.textContent = ''; 
     nextRoundBtn.disabled = true; 
     enterBtn.disabled = false; 
-    }
+    closeResetOptions(); 
+
+}; 
+
+const closeResetOptions = () => {
+    document.getElementById('reset-choices').style.display = 'none'; 
+    document.getElementById('game-message').classList.remove('visible'); 
+}; 
+
+const resetGame = () => {
+    displayResetConfirmation(); 
 }
+
 
 /*----------------------------- Event Listeners ----------------------------*/
 
@@ -296,5 +310,8 @@ nextRoundBtn.addEventListener('click', (evt) => {
 resetBtn.addEventListener('click', (evt) => {
     resetGame(); 
 }); 
+
+document.getElementById('confirm-reset-btn').addEventListener('click', handleConfirmReset); 
+document.getElementById('cancel-reset-btn').addEventListener('click', closeResetOptions); 
 
 gameInit(); 
