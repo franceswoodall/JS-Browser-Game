@@ -38,15 +38,15 @@ const resetBtn = document.querySelector('#reset-button');
 
 /*-------------------------------- Functions --------------------------------*/
 
-const updateRoundDisplay = () => {
-    const displayRoundNumber = currentRound +1; 
-    roundTrackerEl.textContent = `Round ${displayRoundNumber}`; 
-}
-
 const gameInit = () => {
     winningWord = solutionWords[currentRound]; 
     updateRoundDisplay(); 
     nextRoundBtn.disabled = true; 
+}
+
+const updateRoundDisplay = () => {
+    const displayRoundNumber = currentRound +1; 
+    roundTrackerEl.textContent = `Round ${displayRoundNumber}`; 
 }
 
 const updateGrid = (letter) => {
@@ -177,7 +177,6 @@ const updateKeyboardColor = (letter, status) => {
     }
 }; 
    
-
 const resetKeyboardColors = () => {
     keyBtns.forEach((key) => {
         key.classList.remove('correct-placement'); 
@@ -185,7 +184,6 @@ const resetKeyboardColors = () => {
         key.classList.remove('incorrect-letter'); 
     }); 
 }; 
-
 
 const evaluateGuess = (playerGuess) => {
    const solution = winningWord.toUpperCase().split('');
@@ -264,7 +262,6 @@ const resetGame = () => {
         messageEl.textContent = ''; 
         nextRoundBtn.disabled = true;
         enterBtn.disabled = false;  
-
     }
 }
 
