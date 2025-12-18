@@ -7,6 +7,7 @@ body {
     padding-top: 10px;
     background-color: black; 
     font-family: 'Courier New', Courier, monospace; 
+    padding-top: 30px; 
 }
 
 h1, h2, h3 {
@@ -40,11 +41,11 @@ h3 {
     background-color: lightgreen; 
     gap: 10px; 
     width: 90vw;
-    max-width: 400px; 
+    max-width: 360px; 
     margin: 5px auto 7px auto;  
     justify-content: center;
-    padding: 10px; 
-    margin-top: 0px; 
+    padding: 20px; 
+    margin-top: 1px; 
 }
 
 .row {
