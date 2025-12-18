@@ -23,6 +23,7 @@ h1 {
     font-weight: bold;  
     margin-bottom: 5px; 
     text-decoration: underline wavy green;
+    text-underline-offset: 3px;
 }
 
 h2 { 
