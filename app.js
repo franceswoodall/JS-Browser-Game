@@ -185,28 +185,39 @@ const resetKeyboardColors = () => {
 
 
 const evaluateGuess = (playerGuess) => {
-   const solution = winningWord.toUpperCase(); 
+   const solution = winningWord.toUpperCase().split('');
+   const guess = playerGuess.split('');  
    const guessTiles = document.querySelectorAll(`#row-${currentRow} .tile`); 
    
-   guessTiles.forEach((tile, index) => {
-    const guessedLetter = playerGuess[index]; 
-    const solutionLetter = solution[index];
-    let keyStatus = 'incorrect-letter'; 
+   const solutionLettersCounts = {}; 
+   solution.forEach(letter => {
+    solutionLettersCounts[letter] = (solutionLettersCounts[letter] || 0) +1; 
+   }); 
 
-    if (guessedLetter === solutionLetter) {
-        tile.classList.add('correct-placement'); 
-        keyStatus = 'correct-placement'; 
-    } else if (solution.includes(guessedLetter)) {
-        tile.classList.add('incorrect-placement'); 
-        keyStatus = 'incorrect-placement'; 
-    } else {
-            tile.classList.add('incorrect-letter'); 
-   }
-   updateKeyboardColor(guessedLetter, keyStatus); 
-    }); 
+   const statuses = Array(maxWordLength).fill('incorrect-letter'); 
+   
+   guess.forEach((letter, i) => {
+    if (letter === solution[i]) {
+        statuses[i] = 'correct-placement'; 
+        solutionLettersCounts[letter]--; 
+    }
+   }); 
+
+   guess.forEach((letter, i) => {
+    if (statuses[i] !== 'correct-placement') {
+        if (solution.includes(letter) && solutionLettersCounts[letter] >0) {
+            statuses[i] = 'incorrect-placement'; 
+            solutionLettersCounts[letter] --; 
+        }
+    }
+   }); 
+
+   guessTiles.forEach((tile, i) => {
+    tile.classList.add(statuses[i]); 
+    updateKeyboardColor(guess[i], statuses[i]); 
+   }); 
 }; 
-
-
+   
 const advanceToNextRound = () => {
     messageEl.textContent = ''; 
     clearGrid(); 
@@ -249,8 +260,6 @@ const resetGame = () => {
 
 /*----------------------------- Event Listeners ----------------------------*/
 
-gameInit(); 
-
 keyBtns.forEach(btn => {
     btn.addEventListener('click', (evt) => {
         const clickedBtnElement = evt.target;
@@ -277,3 +286,5 @@ nextRoundBtn.addEventListener('click', (evt) => {
 resetBtn.addEventListener('click', (evt) => {
     resetGame(); 
 }); 
+
+gameInit(); 
