@@ -78,7 +78,7 @@ const handleWin = (finalRound) => {
     }
 }; 
 
-function showMessage(messageContent, duration = 2000) {
+function showMessage(messageContent, duration = 3000) {
     const gameMessageElement = document.getElementById('game-message'); 
     if (messageTimeout) clearTimeout(messageTimeout); 
 
