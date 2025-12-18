@@ -19,14 +19,14 @@ h1, h2, h3 {
 }
 
 h1 {
-    font-size: 26px; 
+    font-size: 28px; 
     font-weight: bold;  
-    margin-bottom: -1px; 
+    margin-bottom: 5px; 
 }
 
 h2 { 
     font-size: 20px; 
-    margin-bottom: -1px; 
+    margin-bottom: 5px; 
 
 }
 
@@ -45,7 +45,7 @@ h3 {
     margin: 5px auto 7px auto;  
     justify-content: center;
     padding: 2px; 
-    margin-top: 30px; 
+    margin-top: 15px; 
 }
 
 .row {
