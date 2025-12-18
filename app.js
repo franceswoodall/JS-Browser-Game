@@ -1,3 +1,4 @@
+import {solutionWords} from "./wordList.js"; 
 
 
 /*-------------------------------- Constants ----------------------------------*/
@@ -7,8 +8,6 @@ const maxWordLength = 5;
 const maxRows = 6; 
 
 const maxGameRounds = 10; 
-
-import {solutionWords} from "./wordList.js"; 
 
 /*---------------------------- Variables (state) ----------------------------*/
 
@@ -161,11 +160,20 @@ const clickBackspace = () => {
 }; 
 
 const updateKeyboardColor = (letter, status) => {
-    const keyEl = document.getElementById(letter); 
-    if (!keyEl.classList.contains('correct-placement') && (!keyEl.classList.contains('incorrect-placement'))) {
-        keyEl.classList.add(status); 
-    }; 
-}
+    const keyEl = document.getElementById(letter.toUpperCase());
+    if (!keyEl) return; 
+
+    if (status === 'correct-placement') {
+        keyEl.classList.remove('incorrect-placement', 'incorrect-letter'); 
+        keyEl.classList.add('correct-placement'); 
+    } else if (status === 'incorrect-placement' &&!keyEl.classList.contains('correct-placement')){
+        keyEl.classList.remove('incorrect-letter');
+        keyEl.classList.add('incorrect-placement'); 
+    } else if (status === 'incorrect-letter' && !keyEl.classList.contains('correct-placement') && !keyEl.classList.contains('incorrect-placement')){
+        keyEl.classList.add('incorrect-letter'); 
+    }
+}; 
+   
 
 const resetKeyboardColors = () => {
     keyBtns.forEach((key) => {
