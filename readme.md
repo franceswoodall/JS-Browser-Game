@@ -24,15 +24,16 @@
 
 #Technologies used 
 JavaScript, HTML & CSS. 
+Title icon is a screenshot of my game. 
 
 #Next Steps 
 * To further develop this game some suggestions include: 
 
-* For the game play logic: 
+* Game play logic: 
     - Creating a more complex 'lose' logic. Introducing either a timer element or a lives element would likely improve the user experience as they would not need to reset the game entirely but could lose a life after 6 guesses instead. 
     - Additional instructions on the screen for the player. 
 
-* For the design: 
+* Design element: 
     - Using media queries to evaluate this on different devices (phone, laptop etc). 
     - Increasing animation when tiles appear on the grid (for example turning or popping out at the player). 
     - Having a live animation appear on the final round, such as confetti falling down the page. 
