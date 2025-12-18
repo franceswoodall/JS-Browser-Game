@@ -253,6 +253,9 @@ const clearGrid = () => {
 }
 
 const resetGame = () => {
+    const confirmReset = confirm("Hold your reindeer! Are you sure you want to reset?"); 
+
+    if (confirmed) {
     currentRound = 0; 
     currentTileIndex = 0; 
     currentRow = 0; 
@@ -262,6 +265,7 @@ const resetGame = () => {
     messageEl.textContent = ''; 
     nextRoundBtn.disabled = true; 
     enterBtn.disabled = false; 
+    }
 }
 
 /*----------------------------- Event Listeners ----------------------------*/
