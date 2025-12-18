@@ -311,9 +311,9 @@ resetBtn.addEventListener('click', (evt) => {
     resetGame(); 
 }); 
 
-confirmResetBtn.addEventListener('click', performFullReset); 
-
-confirmNoBtn.addEventListener('click', () =>  {
+confirmYesBtn.addEventListener('click', () =>  {
     confirmActions.style.display = 'none'; 
     messageEl.textContent = ''; 
 }); 
+
+confirmNoBtn.addEventListener('click', performFullReset); 
