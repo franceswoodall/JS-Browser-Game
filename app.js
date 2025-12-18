@@ -36,6 +36,8 @@ const roundTrackerEl = document.querySelector('#round-tracker');
 
 const resetBtn = document.querySelector('#reset-button'); 
 
+const confirmResestActions = document.querySelector('#confirm-reset-actions'); 
+
 const confirmYesBtn = document.querySelector('#confirm-yes'); 
 
 const confirmNoBtn = document.querySelector('#confirm-no'); 
@@ -209,7 +211,7 @@ const clearGrid = () => {
         tile.classList.remove('incorrect-placement'); 
         tile.classList.remove('incorrect-letter'); 
     }); 
-}
+}; 
 
 const resetKeyboardColors = () => {
     keyBtns.forEach((key) => {
@@ -231,7 +233,7 @@ const confirmResetAction = () => {
     confirmActions.style.display = 'none'; 
     nextRoundBtn.disabled = true; 
     enterBtn.disabled = false; 
-}
+}; 
 
 const cancelResetAction = () => {
     confirmActions.style.display = 'none'; 
@@ -240,7 +242,7 @@ const cancelResetAction = () => {
 }; 
 
 const resetGame = () => {
-    showMessage('Hold your reindeer, are you sure you want to reset?'), 0) 
+    showMessage('Hold your reindeer, are you sure you want to reset?', 0); 
         confirmActions.style.display = 'block'; 
 }; 
    
@@ -303,13 +305,13 @@ backspaceBtn.addEventListener('click', (evt) => {
 
 nextRoundBtn.addEventListener('click', (evt) => {
     advanceToNextRound();
-})
+}); 
 
 resetBtn.addEventListener('click', (evt) => {
     resetGame(); 
 }); 
 
-confirmYesBtn.addEventListener('click', performFullReset); 
+confirmResetBtn.addEventListener('click', performFullReset); 
 
 confirmNoBtn.addEventListener('click', () =>  {
     confirmActions.style.display = 'none'; 
