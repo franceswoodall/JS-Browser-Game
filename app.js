@@ -219,6 +219,20 @@ const resetKeyboardColors = () => {
     }); 
 }; 
 
+const confirmResetAction = () => {
+    currentRound = 0; 
+    currentRow = 0; 
+    currentTileIndex = 0; 
+    clearGrid(); 
+    resetKeyboardColors(); 
+    gameInit(); 
+    messageEl.textContent = ''; 
+    messageEl.classList.remove('visible'); 
+    confirmActions.style.display = 'none'; 
+    nextRoundBtn.disabled = true; 
+    enterBtn.disabled = false; 
+}
+
 const cancelResetAction = () => {
     confirmActions.style.display = 'none'; 
     messageEl.textContent = ''; 
