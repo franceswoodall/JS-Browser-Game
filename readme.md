@@ -7,7 +7,7 @@
 * Wordle was created in October 2021 when a Welsh software engineer built the game for his partner during the pandemic. It grew from 90 daily players in November 2021 to over 2 million just two months later. 
 * It remains a popular game, so grab a cup of cocoa and enjoy this festive edition. 
 
-#Instructions - general 
+#Instructions
 * There are 10 rounds in this game.
 * Within each round, the player has 6 opportunities to guess the 'winning' word.
 * The winning word is always a 5 letter word. 
