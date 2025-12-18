@@ -1,6 +1,5 @@
 import {solutionWords} from "./wordList.js"; 
 
-
 /*-------------------------------- Constants ----------------------------------*/
 
 const maxWordLength = 5; 

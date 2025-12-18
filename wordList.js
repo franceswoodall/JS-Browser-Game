@@ -2,7 +2,7 @@ export const solutionWords = [
     'SANTA', 
     'ANGEL', 
     'CAROL',
-    'ROBIN',
+    'MERRY',
     'FROST', 
     'ELVES',
     'CUPID',
