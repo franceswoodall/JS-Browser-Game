@@ -112,7 +112,7 @@ const handleLoss = () => {
 
 const clickEnter = () => {
  
-    if (enterBtn.disabled || nextRoundBtn.disabled === false) {
+    if (enterBtn.disabled || !nextRoundBtn.disabled) {
         return; 
     }
 

@@ -1,5 +1,7 @@
 #Christmas Wordle
 
+![alt text](<Screenshot 2025-12-18 at 08.56.50.png>)
+
 #Background 
 * This game is the Christmas themed version of the popular game 'Wordle'! 
 * Wordle was created in October 2021 when a Welsh software engineer built the game for his partner during the pandemic. It grew from 90 daily players in November 2021 to over 2 million just two months later. 
