@@ -36,6 +36,10 @@ const roundTrackerEl = document.querySelector('#round-tracker');
 
 const resetBtn = document.querySelector('#reset-button'); 
 
+const confirmYesBtn = document.querySelector('#confirm-yes'); 
+
+const confirmNoBtn = document.querySelector('#confirm-no'); 
+
 /*-------------------------------- Functions --------------------------------*/
 
 const gameInit = () => {
@@ -294,4 +298,11 @@ nextRoundBtn.addEventListener('click', (evt) => {
 
 resetBtn.addEventListener('click', (evt) => {
     resetGame(); 
+}); 
+
+confirmYesBtn.addEventListener('click', performFullReset); 
+
+confirmNoBtn.addEventListener('click', () =>  {
+    confirmActions.style.display = 'none'; 
+    messageEl.textContent = ''; 
 }); 
