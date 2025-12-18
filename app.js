@@ -223,18 +223,19 @@ const evaluateGuess = (playerGuess) => {
 }; 
    
 const advanceToNextRound = () => {
-    messageEl.textContent = ''; 
-    clearGrid(); 
-    resetKeyboardColors(); 
-    enterBtn.disabled = false; 
-    nextRoundBtn.disabled = true; 
-
     currentRound ++; 
 
-    if (currentRound < maxGameRounds) {
+    if (currentRound < solutionWords.length && currentRound < maxGameRounds) {
+        messageEl.textContent = ''; 
+        clearGrid(); 
+        resetKeyboardColors(); 
+        enterBtn.disabled = false; 
+        nextRoundBtn.disabled = true; 
+        
         winningWord = solutionWords[currentRound]; 
         updateRoundDisplay(); 
-    }
+        currentRow = 0; 
+        currentTileIndex = 0; 
 }; 
 
 const clearGrid = () => {
@@ -254,6 +255,7 @@ const clearGrid = () => {
 const resetGame = () => {
     currentRound = 0; 
     currentTileIndex = 0; 
+    currentRow = 0; 
     clearGrid(); 
     resetKeyboardColors(); 
     gameInit(); 
