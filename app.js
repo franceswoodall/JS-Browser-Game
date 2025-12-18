@@ -231,11 +231,12 @@ const advanceToNextRound = () => {
         resetKeyboardColors(); 
         enterBtn.disabled = false; 
         nextRoundBtn.disabled = true; 
-        
+
         winningWord = solutionWords[currentRound]; 
         updateRoundDisplay(); 
         currentRow = 0; 
         currentTileIndex = 0; 
+    }
 }; 
 
 const clearGrid = () => {
