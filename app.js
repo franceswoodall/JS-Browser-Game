@@ -70,7 +70,7 @@ const handleWin = (finalRound) => {
     enterBtn.disabled = true; 
 
     if (finalRound) {
-        showMessage(`Son of a nutcracker you have won! You are officially a wise (hu)man`, 0); 
+        showMessage(`Son of a nutcracker you have won! You are officially a wise man`, 0); 
         nextRoundBtn.disabled = true; 
     } else {
         showMessage('You are sleigh-in it! Click next round button', 0); 
@@ -104,7 +104,7 @@ const handleLoss = () => {
     } else if (roundsCompleted >= 7 && roundsCompleted <=9) {
         playerMessage = `Cracker attempt, you are a rudolph! You scored ${roundsCompleted}/${maxGameRounds}. Click reset game to play again`; 
     } else {
-        playerMessage = `Son of a nutcracker you have won! You are officially a wise (hu)man`; 
+        playerMessage = `Son of a nutcracker you have won! You are officially a wise man`; 
     }
     showMessage(playerMessage, 0); 
     nextRoundBtn.disabled = true; 

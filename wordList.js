@@ -1,5 +1,5 @@
 export const solutionWords = [
-    'POLAR', 
+    'SANTA', 
     'ANGEL', 
     'CAROL',
     'FROST',
