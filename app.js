@@ -219,21 +219,16 @@ const resetKeyboardColors = () => {
     }); 
 }; 
 
+const cancelResetAction = () => {
+    confirmActions.style.display = 'none'; 
+    messageEl.textContent = ''; 
+    messageEl.classList.remove('visible'); 
+}; 
+
 const resetGame = () => {
-    if (confirm('Hold your reindeer, are you sure you want to reset?')) {
-        currentRound = 0; 
-        currentTileIndex = 0; 
-        currentRow = 0; 
-
-        clearGrid(); 
-        resetKeyboardColors();
-        gameInit(); 
-
-        messageEl.textContent = ''; 
-        nextRoundBtn.disabled = true;
-        enterBtn.disabled = false;  
-    }
-}
+    showMessage('Hold your reindeer, are you sure you want to reset?'), 0) 
+        confirmActions.style.display = 'block'; 
+}; 
    
 const evaluateGuess = (playerGuess) => {
    const solution = winningWord.toUpperCase().split('');
