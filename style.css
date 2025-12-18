@@ -21,6 +21,7 @@ h1, h2, h3 {
 h1 {
     font-size: 28px; 
     font-weight: bold;  
+    margin: 0; 
     margin-bottom: 10px; 
     text-decoration: underline wavy green;
     text-underline-offset: 3px;
