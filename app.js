@@ -66,15 +66,31 @@ const insufficientLetters = () => {
     showMessage('Icy you need to add more letters!'); 
 }
 
-const handleWin = (finalRound) => {
-    enterBtn.disabled = true; 
+const clickBackspace = () => {
+    if (currentTileIndex > 0) {
+        currentTileIndex--; 
 
-    if (finalRound) {
-        showMessage(`Son of a nutcracker you have won! You are officially a wise man`, 0); 
-        nextRoundBtn.disabled = true; 
-    } else {
-        showMessage('You are sleigh-in it! Click next round button', 0); 
-        nextRoundBtn.disabled = false; 
+        const tileId = `tile-${currentRow}-${currentTileIndex}`; 
+        const currentTile = document.getElementById(tileId); 
+
+        if (currentTile) {
+            currentTile.textContent = ''; 
+        }
+    }
+}; 
+
+const updateKeyboardColor = (letter, status) => {
+    const keyEl = document.getElementById(letter.toUpperCase());
+    if (!keyEl) return; 
+
+    if (status === 'correct-placement') {
+        keyEl.classList.remove('incorrect-placement', 'incorrect-letter'); 
+        keyEl.classList.add('correct-placement'); 
+    } else if (status === 'incorrect-placement' &&!keyEl.classList.contains('correct-placement')){
+        keyEl.classList.remove('incorrect-letter');
+        keyEl.classList.add('incorrect-placement'); 
+    } else if (status === 'incorrect-letter' && !keyEl.classList.contains('correct-placement') && !keyEl.classList.contains('incorrect-placement')){
+        keyEl.classList.add('incorrect-letter'); 
     }
 }; 
 
@@ -91,25 +107,6 @@ function showMessage(messageContent, duration = 3000) {
         messageTimeout = null; 
     }, duration); 
     }
-}; 
-
-const handleLoss = () => {
-    enterBtn.disabled = true; 
-    const roundsCompleted = currentRound; 
-
-    let playerMessage = ''; 
-
-    if (roundsCompleted >= 0 && roundsCompleted <=3) {
-        playerMessage = `Bah humbug! You scored ${roundsCompleted}/${maxGameRounds} you cotton-headed ninny muggin! Click reset game to play again`; 
-    } else if (roundsCompleted >=4 && roundsCompleted <=6) {
-        playerMessage = `Not snow bad! You must be a south pole elf. You scored ${roundsCompleted}/${maxGameRounds}. Click reset game to play again`; 
-    } else if (roundsCompleted >= 7 && roundsCompleted <=9) {
-        playerMessage = `Cracker attempt, you are a rudolph! You scored ${roundsCompleted}/${maxGameRounds}. Click reset game to play again`; 
-    } else {
-        playerMessage = `Son of a nutcracker you have won! You are officially a wise man`; 
-    }
-    showMessage(playerMessage, 0); 
-    nextRoundBtn.disabled = true; 
 }; 
 
 const clickEnter = () => {
@@ -149,34 +146,67 @@ const clickEnter = () => {
     }
 }; 
 
-const clickBackspace = () => {
-    if (currentTileIndex > 0) {
-        currentTileIndex--; 
+const handleWin = (finalRound) => {
+    enterBtn.disabled = true; 
 
-        const tileId = `tile-${currentRow}-${currentTileIndex}`; 
-        const currentTile = document.getElementById(tileId); 
-
-        if (currentTile) {
-            currentTile.textContent = ''; 
-        }
+    if (finalRound) {
+        showMessage(`Son of a nutcracker you have won! You are officially a wise man`, 0); 
+        nextRoundBtn.disabled = true; 
+    } else {
+        showMessage('You are sleigh-in it! Click next round button', 0); 
+        nextRoundBtn.disabled = false; 
     }
 }; 
 
-const updateKeyboardColor = (letter, status) => {
-    const keyEl = document.getElementById(letter.toUpperCase());
-    if (!keyEl) return; 
+const handleLoss = () => {
+    enterBtn.disabled = true; 
+    const roundsCompleted = currentRound; 
 
-    if (status === 'correct-placement') {
-        keyEl.classList.remove('incorrect-placement', 'incorrect-letter'); 
-        keyEl.classList.add('correct-placement'); 
-    } else if (status === 'incorrect-placement' &&!keyEl.classList.contains('correct-placement')){
-        keyEl.classList.remove('incorrect-letter');
-        keyEl.classList.add('incorrect-placement'); 
-    } else if (status === 'incorrect-letter' && !keyEl.classList.contains('correct-placement') && !keyEl.classList.contains('incorrect-placement')){
-        keyEl.classList.add('incorrect-letter'); 
+    let playerMessage = ''; 
+
+    if (roundsCompleted >= 0 && roundsCompleted <=3) {
+        playerMessage = `Bah humbug! You scored ${roundsCompleted}/${maxGameRounds} you cotton-headed ninny muggin! Click reset game to play again`; 
+    } else if (roundsCompleted >=4 && roundsCompleted <=6) {
+        playerMessage = `Not snow bad! You must be a south pole elf. You scored ${roundsCompleted}/${maxGameRounds}. Click reset game to play again`; 
+    } else if (roundsCompleted >= 7 && roundsCompleted <=9) {
+        playerMessage = `Cracker attempt, you are a rudolph! You scored ${roundsCompleted}/${maxGameRounds}. Click reset game to play again`; 
+    } else {
+        playerMessage = `Son of a nutcracker you have won! You are officially a wise man`; 
+    }
+    showMessage(playerMessage, 0); 
+    nextRoundBtn.disabled = true; 
+}; 
+
+const advanceToNextRound = () => {
+    currentRound ++; 
+
+    if (currentRound < solutionWords.length && currentRound < maxGameRounds) {
+        messageEl.textContent = ''; 
+        clearGrid(); 
+        resetKeyboardColors(); 
+        enterBtn.disabled = false; 
+        nextRoundBtn.disabled = true; 
+
+        winningWord = solutionWords[currentRound]; 
+        updateRoundDisplay(); 
+        currentRow = 0; 
+        currentTileIndex = 0; 
     }
 }; 
-   
+
+const clearGrid = () => {
+    currentRow = 0; 
+    currentTileIndex = 0; 
+
+    const allTiles = document.querySelectorAll('.tile'); 
+    allTiles.forEach(tile => {
+        tile.textContent = ''; 
+        tile.classList.remove('correct-placement'); 
+        tile.classList.remove('incorrect-placement'); 
+        tile.classList.remove('incorrect-letter'); 
+    }); 
+}
+
 const resetKeyboardColors = () => {
     keyBtns.forEach((key) => {
         key.classList.remove('correct-placement'); 
@@ -185,6 +215,22 @@ const resetKeyboardColors = () => {
     }); 
 }; 
 
+const resetGame = () => {
+    if (confirm('Hold your reindeer, are you sure you want to reset?')) {
+        currentRound = 0; 
+        currentTileIndex = 0; 
+        currentRow = 0; 
+
+        clearGrid(); 
+        resetKeyboardColors();
+        gameInit(); 
+
+        messageEl.textContent = ''; 
+        nextRoundBtn.disabled = true;
+        enterBtn.disabled = false;  
+    }
+}
+   
 const evaluateGuess = (playerGuess) => {
    const solution = winningWord.toUpperCase().split('');
    const guess = playerGuess.split('');  
@@ -219,52 +265,6 @@ const evaluateGuess = (playerGuess) => {
    }); 
 }; 
    
-const advanceToNextRound = () => {
-    currentRound ++; 
-
-    if (currentRound < solutionWords.length && currentRound < maxGameRounds) {
-        messageEl.textContent = ''; 
-        clearGrid(); 
-        resetKeyboardColors(); 
-        enterBtn.disabled = false; 
-        nextRoundBtn.disabled = true; 
-
-        winningWord = solutionWords[currentRound]; 
-        updateRoundDisplay(); 
-        currentRow = 0; 
-        currentTileIndex = 0; 
-    }
-}; 
-
-const clearGrid = () => {
-    currentRow = 0; 
-    currentTileIndex = 0; 
-
-    const allTiles = document.querySelectorAll('.tile'); 
-    allTiles.forEach(tile => {
-        tile.textContent = ''; 
-        tile.classList.remove('correct-placement'); 
-        tile.classList.remove('incorrect-placement'); 
-        tile.classList.remove('incorrect-letter'); 
-    }); 
-}
-
-const resetGame = () => {
-    if (confirm('Hold your reindeer, are you sure you want to reset?')) {
-        currentRound = 0; 
-        currentTileIndex = 0; 
-        currentRow = 0; 
-
-        clearGrid(); 
-        resetKeyboardColors();
-        gameInit(); 
-
-        messageEl.textContent = ''; 
-        nextRoundBtn.disabled = true;
-        enterBtn.disabled = false;  
-    }
-}
-
 gameInit(); 
 
 /*----------------------------- Event Listeners ----------------------------*/
