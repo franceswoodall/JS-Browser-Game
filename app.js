@@ -268,6 +268,7 @@ const resetGame = () => {
     }
 }
 
+gameInit(); 
 
 /*----------------------------- Event Listeners ----------------------------*/
 
@@ -297,5 +298,3 @@ nextRoundBtn.addEventListener('click', (evt) => {
 resetBtn.addEventListener('click', (evt) => {
     resetGame(); 
 }); 
-
-gameInit(); 
