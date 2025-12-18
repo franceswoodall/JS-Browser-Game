@@ -19,6 +19,8 @@ let currentRow = 0;
 
 let currentTileIndex = 0;  
 
+let messageTimeout; 
+
 /*------------------------ Cached Element References ------------------------*/
 
 const keyBtns = document.querySelectorAll('.key'); 
