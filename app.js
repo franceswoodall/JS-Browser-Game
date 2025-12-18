@@ -81,13 +81,15 @@ const handleWin = (finalRound) => {
 
 function showMessage(messageContent, duration = 2000) {
     const gameMessageElement = document.getElementById('game-message'); 
+    if (messageTimeout) clearTimeout(messageTimeout); 
+
     gameMessageElement.innerText = messageContent; 
-    
     gameMessageElement.classList.add('visible'); 
 
     if (duration > 0) {
     setTimeout(() => {
         gameMessageElement.classList.remove('visible'); 
+        messageTimeout = null; 
     }, duration); 
     }
 }; 
