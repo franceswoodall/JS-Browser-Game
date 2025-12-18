@@ -278,7 +278,20 @@ const closeResetOptions = () => {
 }; 
 
 const resetGame = () => {
-    displayResetConfirmation(); 
+    if (confirm('Hold your reindeer, are you sure you want to reset?')) {
+        currentRound = 0; 
+        currentTileIndex = 0; 
+        currentRow = 0; 
+
+        clearGrid(); 
+        resetKeyboardColors();
+        gameInit(); 
+
+        messageEl.textContent = ''; 
+        nextRoundBtn.disabled = true;
+        enterBtn.disabled = false;  
+
+    }
 }
 
 

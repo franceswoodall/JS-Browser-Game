@@ -148,16 +148,6 @@ h3 {
     cursor: pointer;
 } 
 
-#reset-choices {
-    padding: 10px 20px; 
-    border: none; 
-    border-radius: 5px; 
-    background-color: gold;
-    color: black;
-    font-weight: bold;
-    cursor: pointer;
-}
-
 #game-message {
     color: #ff0000; 
     font-size: 1.0rem; 
