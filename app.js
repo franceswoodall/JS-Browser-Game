@@ -36,7 +36,7 @@ const roundTrackerEl = document.querySelector('#round-tracker');
 
 const resetBtn = document.querySelector('#reset-button'); 
 
-const confirmResestActions = document.querySelector('#confirm-reset-actions'); 
+const confirmActions = document.querySelector('#confirm-reset-actions'); 
 
 const confirmYesBtn = document.querySelector('#confirm-yes'); 
 
@@ -113,6 +113,40 @@ function showMessage(messageContent, duration = 3000) {
         messageTimeout = null; 
     }, duration); 
     }
+}; 
+
+const evaluateGuess = (playerGuess) => {
+   const solution = winningWord.toUpperCase().split('');
+   const guess = playerGuess.split('');  
+   const guessTiles = document.querySelectorAll(`#row-${currentRow} .tile`); 
+   
+   const solutionLettersCounts = {}; 
+   solution.forEach(letter => {
+    solutionLettersCounts[letter] = (solutionLettersCounts[letter] || 0) +1; 
+   }); 
+
+   const statuses = Array(maxWordLength).fill('incorrect-letter'); 
+   
+   guess.forEach((letter, i) => {
+    if (letter === solution[i]) {
+        statuses[i] = 'correct-placement'; 
+        solutionLettersCounts[letter]--; 
+    }
+   }); 
+
+   guess.forEach((letter, i) => {
+    if (statuses[i] !== 'correct-placement') {
+        if (solution.includes(letter) && solutionLettersCounts[letter] >0) {
+            statuses[i] = 'incorrect-placement'; 
+            solutionLettersCounts[letter] --; 
+        }
+    }
+   }); 
+
+   guessTiles.forEach((tile, i) => {
+    tile.classList.add(statuses[i]); 
+    updateKeyboardColor(guess[i], statuses[i]); 
+   }); 
 }; 
 
 const clickEnter = () => {
@@ -246,40 +280,6 @@ const resetGame = () => {
         confirmActions.style.display = 'block'; 
 }; 
    
-const evaluateGuess = (playerGuess) => {
-   const solution = winningWord.toUpperCase().split('');
-   const guess = playerGuess.split('');  
-   const guessTiles = document.querySelectorAll(`#row-${currentRow} .tile`); 
-   
-   const solutionLettersCounts = {}; 
-   solution.forEach(letter => {
-    solutionLettersCounts[letter] = (solutionLettersCounts[letter] || 0) +1; 
-   }); 
-
-   const statuses = Array(maxWordLength).fill('incorrect-letter'); 
-   
-   guess.forEach((letter, i) => {
-    if (letter === solution[i]) {
-        statuses[i] = 'correct-placement'; 
-        solutionLettersCounts[letter]--; 
-    }
-   }); 
-
-   guess.forEach((letter, i) => {
-    if (statuses[i] !== 'correct-placement') {
-        if (solution.includes(letter) && solutionLettersCounts[letter] >0) {
-            statuses[i] = 'incorrect-placement'; 
-            solutionLettersCounts[letter] --; 
-        }
-    }
-   }); 
-
-   guessTiles.forEach((tile, i) => {
-    tile.classList.add(statuses[i]); 
-    updateKeyboardColor(guess[i], statuses[i]); 
-   }); 
-}; 
-   
 gameInit(); 
 
 /*----------------------------- Event Listeners ----------------------------*/
@@ -307,13 +307,8 @@ nextRoundBtn.addEventListener('click', (evt) => {
     advanceToNextRound();
 }); 
 
-resetBtn.addEventListener('click', (evt) => {
-    resetGame(); 
-}); 
+resetBtn.addEventListener('click', resetGame); 
 
-confirmYesBtn.addEventListener('click', () =>  {
-    confirmActions.style.display = 'none'; 
-    messageEl.textContent = ''; 
-}); 
+confirmYesBtn.addEventListener('click', confirmResetAction); 
 
-confirmNoBtn.addEventListener('click', performFullReset); 
+confirmNoBtn.addEventListener('click', cancelResetAction); 
