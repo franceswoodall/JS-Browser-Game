@@ -19,6 +19,7 @@ body {
     margin: 5px auto 7px auto;  
     justify-content: center;
     padding: 10px; 
+    margin-top: 0px; 
 }
 
 .row {
@@ -83,7 +84,7 @@ h2 {
 }
 
 h3 {
-    margin: 10px 0 10px 0; 
+    margin: 10px 0 0 0; 
 }
 
 .player-keyboard {
