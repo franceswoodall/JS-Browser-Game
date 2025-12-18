@@ -22,6 +22,7 @@ h1 {
     font-size: 28px; 
     font-weight: bold;  
     margin-bottom: 5px; 
+    text-decoration: underline wavy green;
 }
 
 h2 { 
