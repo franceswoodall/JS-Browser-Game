@@ -103,7 +103,7 @@ function showMessage(messageContent, duration = 3000) {
     messageEl.classList.add('visible'); 
 
     if (duration > 0) {
-    messageTimeout == setTimeout (() => {
+    messageTimeout = setTimeout (() => {
         messageEl.classList.remove('visible'); 
         messageTimeout = null; 
     }, duration); 
