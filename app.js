@@ -36,12 +36,6 @@ const roundTrackerEl = document.querySelector('#round-tracker');
 
 const resetBtn = document.querySelector('#reset-button'); 
 
-const confirmActions = document.querySelector('#confirm-reset-actions'); 
-
-const confirmYesBtn = document.querySelector('#confirm-yes'); 
-
-const confirmNoBtn = document.querySelector('#confirm-no'); 
-
 /*-------------------------------- Functions --------------------------------*/
 
 const gameInit = () => {
@@ -272,14 +266,22 @@ const confirmResetAction = () => {
 }; 
 
 const cancelResetAction = () => {
-    confirmActions.classList.remove('visible'); 
-    messageEl.textContent = ''; 
+    confirmActions.classList.remove('visible');
     messageEl.classList.remove('visible'); 
+    messageEl.textContent = ''; 
 }; 
 
 const resetGame = () => {
-    showMessage('Hold your reindeer, are you sure you want to reset?', 0); 
-        confirmActions.classList.add('visible'); 
+    currentRound = 0; 
+    currentRow = 0; 
+    currentTileIndex = 0; 
+    clearGrid();
+    resetKeyboardColors(); 
+    gameInit(); 
+    messageEl.textContent = ''; 
+    messageEl.classList.remove('visible'); 
+    nextRoundBtn.disabled = true; 
+    enterBtn.disabled = false; 
 }; 
    
 gameInit(); 
@@ -310,7 +312,3 @@ nextRoundBtn.addEventListener('click', (evt) => {
 }); 
 
 resetBtn.addEventListener('click', resetGame); 
-
-confirmYesBtn.addEventListener('click', confirmResetAction); 
-
-confirmNoBtn.addEventListener('click', cancelResetAction); 
