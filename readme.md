@@ -5,7 +5,6 @@
 #Background 
 * This game is the Christmas themed version of the popular game 'Wordle'! 
 * Wordle was created in October 2021 when a Welsh software engineer built the game for his partner during the pandemic. It grew from 90 daily players in November 2021 to over 2 million just two months later. 
-* It remains a popular game, so grab a cup of cocoa and enjoy this festive edition. 
 
 #Instructions
 * There are 10 rounds in this game.
@@ -32,6 +31,7 @@ Title icon is a screenshot of my game.
 * Game play and logic: 
     - Creating a more complex 'lose' logic. Introducing either a timer element or a lives element would likely improve the user experience as they would not need to reset the game entirely but could lose a life after 6 guesses instead. 
     - The ability to have a message appear before the user confirms a reset to avoid potential unwanted resets.
+    - Ensure user cannot click backspace after guessing the correct word. 
     - Additional instructions on the screen for the player. 
 
 * Design element: 

@@ -117,7 +117,7 @@ const evaluateGuess = (playerGuess) => {
    
    const solutionLettersCounts = {}; 
    solution.forEach(letter => {
-    solutionLettersCounts[letter] = (solutionLettersCounts[letter] || 0) +1; 
+    solutionLettersCounts[letter] = (solutionLettersCounts[letter] || 0) + 1; 
    }); 
 
    const statuses = Array(maxWordLength).fill('incorrect-letter'); 
@@ -131,7 +131,7 @@ const evaluateGuess = (playerGuess) => {
 
    guess.forEach((letter, i) => {
     if (statuses[i] !== 'correct-placement') {
-        if (solution.includes(letter) && solutionLettersCounts[letter] >0) {
+        if (solution.includes(letter) && solutionLettersCounts[letter] > 0) {
             statuses[i] = 'incorrect-placement'; 
             solutionLettersCounts[letter] --; 
         }
