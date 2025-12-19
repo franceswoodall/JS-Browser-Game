@@ -277,7 +277,7 @@ const cancelResetAction = () => {
 
 const resetGame = () => {
     showMessage('Hold your reindeer, are you sure you want to reset?', 0); 
-        confirmActions.style.display = 'block'; 
+        confirmActions.classList.add('visible'); 
 }; 
    
 gameInit(); 
