@@ -264,13 +264,13 @@ const confirmResetAction = () => {
     gameInit(); 
     messageEl.textContent = ''; 
     messageEl.classList.remove('visible'); 
-    confirmActions.style.display = 'none'; 
+    confirmActions.classList.remove('visible'); 
     nextRoundBtn.disabled = true; 
     enterBtn.disabled = false; 
 }; 
 
 const cancelResetAction = () => {
-    confirmActions.style.display = 'none'; 
+    confirmActions.classList.remove('visible'); 
     messageEl.textContent = ''; 
     messageEl.classList.remove('visible'); 
 }; 

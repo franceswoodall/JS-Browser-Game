@@ -140,10 +140,16 @@ h3 {
 }
 
 #confirm-reset-actions {
+    display: none;
     width: 100%; 
     justify-content: center;
-    gap: 75px; 
+    align-items: center; 
+    gap: 80px; 
     margin-bottom: 5px; 
+}
+
+#confirm-reset-actions.visible {
+    display: flex;
 }
 
 #confirm-yes, #confirm-no {
