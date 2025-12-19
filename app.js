@@ -56,9 +56,11 @@ const updateRoundDisplay = () => {
 }
 
 const updateGrid = (letter) => {
-    if (currentTileIndex >= maxWordLength || nextRoundBtn.disabled === false) {
+    if (currentTileIndex >= maxWordLength) 
         return; 
-    }
+    if (nextRoundBtn.disabled === false) 
+        return; 
+
     const tileId = `tile-${currentRow}-${currentTileIndex}`; 
     const currentTile = document.getElementById(tileId); 
 
