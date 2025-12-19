@@ -12,7 +12,7 @@ const maxGameRounds = 10;
 
 let winningWord = ''; 
 
-let currentRound = 1; 
+let currentRound = 0; 
 
 let currentRow = 0; 
 
