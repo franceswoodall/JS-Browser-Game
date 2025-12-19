@@ -97,11 +97,10 @@ const updateKeyboardColor = (letter, status) => {
 }; 
 
 function showMessage(messageContent, duration = 3000) {
-    const gameMessageElement = document.getElementById('game-message'); 
     if (messageTimeout) clearTimeout(messageTimeout); 
 
-    gameMessageElement.innerText = messageContent; 
-    gameMessageElement.classList.add('visible'); 
+    messageEl.innerText = messageContent; 
+    messageEl.classList.add('visible'); 
 
     if (duration > 0) {
     setTimeout(() => {
@@ -218,6 +217,7 @@ const advanceToNextRound = () => {
 
     if (currentRound < solutionWords.length && currentRound < maxGameRounds) {
         messageEl.textContent = ''; 
+        messageEl.classList.remove('visible'); 
         clearGrid(); 
         resetKeyboardColors(); 
         enterBtn.disabled = false; 
