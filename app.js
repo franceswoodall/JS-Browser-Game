@@ -104,7 +104,7 @@ function showMessage(messageContent, duration = 3000) {
 
     if (duration > 0) {
     setTimeout(() => {
-        gameMessageElement.classList.remove('visible'); 
+        messageEl.classList.remove('visible'); 
         messageTimeout = null; 
     }, duration); 
     }
