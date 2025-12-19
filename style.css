@@ -139,6 +139,11 @@ h3 {
     margin-top: 0; 
 }
 
+#confirm-yes, #confirm-no {
+    background-color: #538d4e;
+    color: white; 
+}
+
 #confirm-yes {
     background-color: #538d4e;
     color: white; 
