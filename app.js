@@ -42,12 +42,12 @@ const gameInit = () => {
     winningWord = solutionWords[currentRound]; 
     updateRoundDisplay(); 
     nextRoundBtn.disabled = true; 
-}
+}; 
 
 const updateRoundDisplay = () => {
     const displayRoundNumber = currentRound +1; 
     roundTrackerEl.textContent = `Round ${displayRoundNumber}`; 
-}
+}; 
 
 const updateGrid = (letter) => {
     if (currentTileIndex >= maxWordLength) 
@@ -66,7 +66,7 @@ const updateGrid = (letter) => {
 
 const insufficientLetters = () => {
     showMessage('Icy you need to add more letters!', 3000); 
-}
+}; 
 
 const clickBackspace = () => {
     if (currentTileIndex > 0) {
@@ -126,7 +126,7 @@ const evaluateGuess = (playerGuess) => {
     if (letter === solution[i]) {
         statuses[i] = 'correct-placement'; 
         solutionLettersCounts[letter]--; 
-    }
+    }; 
    }); 
 
    guess.forEach((letter, i) => {
@@ -135,7 +135,7 @@ const evaluateGuess = (playerGuess) => {
             statuses[i] = 'incorrect-placement'; 
             solutionLettersCounts[letter] --; 
         }
-    }
+    }; 
    }); 
 
    guessTiles.forEach((tile, i) => {
@@ -153,7 +153,7 @@ const clickEnter = () => {
     if (currentTileIndex < maxWordLength) {
         insufficientLetters(); 
         return; 
-    }; 
+    }
 
     const currentRowElement = document.getElementById(`row-${currentRow}`); 
     const playerGuess = currentRowElement.querySelectorAll('.tile'); 
@@ -222,7 +222,6 @@ const advanceToNextRound = () => {
         resetKeyboardColors(); 
         enterBtn.disabled = false; 
         nextRoundBtn.disabled = true; 
-
         winningWord = solutionWords[currentRound]; 
         updateRoundDisplay(); 
         currentRow = 0; 
