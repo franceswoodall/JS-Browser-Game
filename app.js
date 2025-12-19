@@ -18,7 +18,7 @@ let currentRow = 0;
 
 let currentTileIndex = 0;  
 
-let messageTimeout; 
+let messageTimeout = null; 
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -65,7 +65,7 @@ const updateGrid = (letter) => {
 }; 
 
 const insufficientLetters = () => {
-    showMessage('Icy you need to add more letters!'); 
+    showMessage('Icy you need to add more letters!', 3000); 
 }
 
 const clickBackspace = () => {
@@ -103,7 +103,7 @@ function showMessage(messageContent, duration = 3000) {
     messageEl.classList.add('visible'); 
 
     if (duration > 0) {
-    setTimeout(() => {
+    messageTimeout == setTimeout (() => {
         messageEl.classList.remove('visible'); 
         messageTimeout = null; 
     }, duration); 
