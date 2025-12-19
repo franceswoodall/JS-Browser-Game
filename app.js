@@ -10,9 +10,9 @@ const maxGameRounds = 10;
 
 /*---------------------------- Variables (state) ----------------------------*/
 
-let currentRound = 0; 
+let winningWord = ''; 
 
-let winningWord; 
+let currentRound = 1; 
 
 let currentRow = 0; 
 
@@ -249,26 +249,6 @@ const resetKeyboardColors = () => {
         key.classList.remove('incorrect-placement'); 
         key.classList.remove('incorrect-letter'); 
     }); 
-}; 
-
-const confirmResetAction = () => {
-    currentRound = 0; 
-    currentRow = 0; 
-    currentTileIndex = 0; 
-    clearGrid(); 
-    resetKeyboardColors(); 
-    gameInit(); 
-    messageEl.textContent = ''; 
-    messageEl.classList.remove('visible'); 
-    confirmActions.classList.remove('visible'); 
-    nextRoundBtn.disabled = true; 
-    enterBtn.disabled = false; 
-}; 
-
-const cancelResetAction = () => {
-    confirmActions.classList.remove('visible');
-    messageEl.classList.remove('visible'); 
-    messageEl.textContent = ''; 
 }; 
 
 const resetGame = () => {

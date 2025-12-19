@@ -13,28 +13,24 @@ h1, h2, h3 {
     color: #ff0000; 
     text-align: center;
     width: 100%; 
-    margin: 0; 
+    margin: 0 0 10px 0; 
     line-height: 1.0;
 }
 
 h1 {
     font-size: 28px; 
     font-weight: bold;  
-    margin: 0; 
-    margin-bottom: 10px; 
     text-decoration: underline wavy green;
     text-underline-offset: 3px;
 }
 
 h2 { 
     font-size: 22px; 
-    margin-bottom: 10px; 
 
 }
 
 h3 {
     font-size: 18px; 
-    margin-bottom: 10px; 
 }
 
 .grid {
@@ -47,14 +43,12 @@ h3 {
     margin: 5px auto 7px auto;  
     justify-content: center;
     padding: 2px; 
-    margin-top: 0px; 
 }
 
 .row {
     display: flex;
     justify-content: center;
     gap: 10px; 
-    flex: 1; 
 }
 
 .tile {
@@ -102,7 +96,7 @@ h3 {
     border: none;
 }
 
-.key-btn {
+.key, .key-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -110,40 +104,43 @@ h3 {
     background-color: #d3d6da;
     color: black; 
     font-weight: bold; 
-    font-size: 0.6em; 
     border-radius: 4px;
     cursor: pointer;
     text-transform: uppercase;
     border: none;
-    flex-basis: 0;
     flex-grow: 1.6; 
 }
 
-#confirm-reset-actions, .footer-buttons {
+.key {
+    font-size: 1em;
+}
+
+.key-btn {
+    font-size: 0.6em;
+    flex-grow: 1.6;
+}
+
+.footer-buttons {
     display: flex;
     justify-content: center;
     gap: 20px; 
     width: 100%; 
 }
 
-#confirm-yes, #confirm-no, #reset-button, #next-round-button {
+#reset-button, #next-round-button {
     padding: 10px 20px; 
     font-size: 1rem; 
     border: none; 
     border-radius: 5px; 
     font-weight: bold; 
     cursor: pointer; 
-    min-width: 100px; 
+    min-width: 160px; 
     text-transform: uppercase; 
     min-width: 160px; 
     box-sizing: border-box; 
-}
-
-#reset-button, #next-round-button, #next-round-button:disabled {
     background-color: gold;
-    color: black;
-    opacity: 1; 
-} 
+    color: black; 
+}
 
 #game-message {
     color: #ff0000; 
@@ -154,7 +151,6 @@ h3 {
     margin: 15px 0; 
     min-height: 1.6em; 
     display: none;
-    background: none;
     position: relative; 
     top: 6px; 
 }
